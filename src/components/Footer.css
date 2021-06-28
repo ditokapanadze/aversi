@@ -1,0 +1,50 @@
+footer {
+  margin-top: 100px;
+  height: 300px;
+  background-color: #6a6a68;
+  display: flex;
+  color: whitesmoke;
+  padding: 50px 100px;
+  justify-content: space-between;
+}
+.footer__logo {
+  color: blue;
+}
+.bank__cards * {
+  margin-right: 20px;
+}
+
+.bank__cards i {
+  color: white;
+  opacity: 0.92;
+  font-size: 40px;
+}
+.footer__left {
+}
+.footer__right {
+  color: var(--main-red);
+}
+.footer__center {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+}
+.bank__cards {
+  margin-top: 200px;
+}
+.footer__center h3 {
+  margin-bottom: 20px;
+}
+.footer__center li {
+  margin-bottom: 10px;
+}
+.footer__right {
+  font-size: 18px;
+  background-color: whitesmoke;
+  width: 227px;
+  height: 43px;
+  border-radius: 10px;
+}
+.footer__right p {
+  margin-left: 10px;
+}

@@ -1,0 +1,23 @@
+.navbar {
+  background-color: var(--main-red);
+  height: 50px;
+  padding-left: 50px;
+  display: flex;
+  align-items: center;
+  color: whitesmoke;
+}
+.nav__ul {
+  display: flex;
+}
+.nav__li {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  transition: all 0.3s;
+  padding-left: 55px;
+  padding-right: 55px;
+}
+.nav__li:hover {
+  cursor: pointer;
+  background-color: var(--hover-red);
+}

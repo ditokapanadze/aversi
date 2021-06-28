@@ -1,0 +1,31 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px 20px 100px;
+  background-color: white;
+}
+
+.search {
+  background: #f4f2f0 0% 0% no-repeat padding-box;
+  border: 2px solid #5f504f14;
+  border-radius: 15px;
+  width: 700px;
+  max-width: 900px;
+  height: 30px;
+  outline: none;
+  padding-left: 20px;
+}
+.header__icons {
+  display: flex;
+  margin-left: 20px;
+}
+.header__icons * {
+  margin-right: 20px;
+  color: var(--main-red);
+  font-size: 25px;
+}
+.logo {
+  margin-top: 10px;
+  margin-right: 20px;
+}

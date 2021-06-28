@@ -1,0 +1,21 @@
+.app__download {
+  padding: 0 100px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.download__content {
+  margin-top: 100px;
+}
+.download__content h1 {
+  margin-bottom: 20px;
+}
+.download__li {
+  margin-bottom: 10px;
+  font-size: 18px;
+  margin-left: 5px;
+}
+.download__li span {
+  font-size: 14px;
+  margin-right: 10px;
+  color: var(--main-red);
+}

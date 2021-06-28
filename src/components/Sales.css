@@ -1,0 +1,32 @@
+.sales {
+  margin-left: 100px;
+  margin-right: 100px;
+  position: relative;
+  margin-top: 50px;
+
+  margin-bottom: 100px;
+}
+.sales__slider__img {
+  width: 100%;
+}
+.sales__slider {
+  border-radius: 10px;
+  padding: 0;
+  box-shadow: 0px 5px 5px #0000000d;
+}
+.sales__slider__date {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  padding-left: 40px;
+  color: var(--main-red);
+}
+.sales__slider__preview {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 40px;
+}
+.sales h2 {
+  position: absolute;
+  top: 40px;
+}
