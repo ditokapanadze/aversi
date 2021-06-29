@@ -41,10 +41,16 @@ footer {
 .footer__right {
   font-size: 18px;
   background-color: whitesmoke;
-  width: 227px;
+  min-width: 227px;
   height: 43px;
   border-radius: 10px;
 }
 .footer__right p {
   margin-left: 10px;
+}
+
+@media screen and (max-width: 1400px) {
+  footer {
+    padding: 50px 25px;
+  }
 }

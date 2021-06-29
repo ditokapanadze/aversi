@@ -1,0 +1,12 @@
+.catalogue__container {
+  padding-top: 30px;
+  margin-left: 20px;
+  align-items: center;
+  width: 70%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.catalogue {
+  display: flex;
+}

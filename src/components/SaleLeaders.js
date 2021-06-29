@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SaleLeaders.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/swiper-bundle.css";
 import medicine from "../assets/medicine.png";
 import star from "../assets/star.png";
+import useWindowDimensions from "./useWindowDimensions";
 SwiperCore.use([Navigation, Pagination]);
 
 function SaleLeaders() {
+  const { height, width } = useWindowDimensions();
+  const [slidesNumber, setSlidesNumber] = useState(4);
+  const [space, setSpace] = useState(48);
+  useEffect(() => {
+    if (width < 1400) {
+      setSlidesNumber(3);
+      setSpace(30);
+    } else if (width > 1400) {
+      setSlidesNumber(4);
+      setSpace(48);
+    }
+  }, [width]);
   return (
     <div className="slider">
       <h2 className="leaders">ლიდერები გაყიდვაში</h2>
       <Swiper
-        spaceBetween={48}
-        slidesPerView={4}
+        spaceBetween={space}
+        slidesPerView={slidesNumber}
         navigation
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}

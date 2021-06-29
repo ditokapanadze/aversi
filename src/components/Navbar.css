@@ -21,3 +21,13 @@
   cursor: pointer;
   background-color: var(--hover-red);
 }
+
+@media screen and (max-width: 1400px) {
+  .navbar {
+    padding-left: 25px;
+  }
+  .nav__li {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+}

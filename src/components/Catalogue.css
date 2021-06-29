@@ -6,6 +6,8 @@
 }
 .cata__card {
   margin-top: 25px;
+  flex-grow: 1;
+  margin-right: 10px;
   width: 277px;
   height: 277px;
   background-color: #ffffff;
@@ -19,4 +21,16 @@
 .cata__card p {
   margin-top: 30px;
   font-size: 22px;
+}
+.catalogue__title {
+  padding-left: 100px;
+}
+
+@media screen and (max-width: 1400px) {
+  .catalgue {
+    padding: 0 25px 100px;
+  }
+  .catalogue__title {
+    padding-left: 25px;
+  }
 }

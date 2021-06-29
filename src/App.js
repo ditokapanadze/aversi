@@ -1,25 +1,27 @@
 import React from "react";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import BackgroundBanner from "./components/BackgroundBanner";
-import ServiceCards from "./components/ServiceCards";
-import SaleLeaders from "./components/SaleLeaders";
-import Sales from "./components/Sales";
-import Catalogue from "./components/Catalogue";
-import AppDownload from "./components/AppDownload";
-import Footer from "./components/Footer";
+
+import Home from "./screens/Home.js";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Header from "./components/Header.js";
+import Navbar from "./components/Navbar.js";
+import Footer from "./components/Footer.js";
+import Catalogue from "./screens/Catalogue.js";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Navbar />
-      <BackgroundBanner />
-      <ServiceCards />
-      <SaleLeaders />
-      <Sales />
-      <Catalogue />
-      <AppDownload />
+      <Router>
+        <Switch>
+          <Route path="/catalogue">
+            <Catalogue />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
       <Footer />
     </div>
   );
