@@ -6,6 +6,7 @@ import Header from "./components/Header.js";
 import Navbar from "./components/Navbar.js";
 import Footer from "./components/Footer.js";
 import Catalogue from "./screens/Catalogue.js";
+import ProductPage from "./screens/ProductPage.js";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Switch>
           <Route path="/catalogue">
             <Catalogue />
+          </Route>
+          <Route path="/product">
+            <ProductPage />
           </Route>
           <Route path="/">
             <Home />
