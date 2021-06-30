@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar.js";
 import Footer from "./components/Footer.js";
 import Catalogue from "./screens/Catalogue.js";
 import ProductPage from "./screens/ProductPage.js";
+import CartPage from "./screens/CartPage.js";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/product">
             <ProductPage />
+          </Route>
+          <Route path="/cart">
+            <CartPage />
           </Route>
           <Route path="/">
             <Home />
