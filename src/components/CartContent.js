@@ -32,9 +32,31 @@ function CartContent() {
               </div>
               <p className="item__price"> 20.00 ლ</p>
               <div className="add__delete">
-                <div>-</div>
-                <div>1</div>
-                <div>+</div>
+                <button>-</button>
+                <p>1</p>
+                <button>+</button>
+              </div>
+              <div>
+                <p>30.00 ლ</p>
+                <p className="delete__item">წაშლა</p>
+              </div>
+            </div>
+            <div className="cart__item">
+              <div className="product__type">
+                <img className="cart__img" src={cartImg} />
+                <div className="cart__item__title">
+                  <p>რედუქსინი</p>
+                  <p>
+                    ანტების <br />
+                    საწინააღმდეგო{" "}
+                  </p>
+                </div>
+              </div>
+              <p className="item__price"> 20.00 ლ</p>
+              <div className="add__delete">
+                <button>-</button>
+                <p>1</p>
+                <button>+</button>
               </div>
               <div>
                 <p>30.00 ლ</p>
@@ -44,7 +66,8 @@ function CartContent() {
           </div>
           <div className="cart__right">
             <div className="product__price">
-              <p>პროდუქცია</p> <p>234 ლარი</p>
+              <p>პროდუქცია</p>
+              <p>234 ლარი</p>
             </div>
             <div className="comission">
               <p>მიტანის საკომისიო</p> <p>0 ლარი</p>
@@ -56,6 +79,9 @@ function CartContent() {
           </div>
         </div>
       </div>
+      <p className="warning">
+        გაყიდული პროდუქცია დაბრუნებას ან/და შეცვლას არ ექვემდებარება
+      </p>
     </>
   );
 }
