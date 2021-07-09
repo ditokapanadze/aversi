@@ -5,78 +5,77 @@ import cartImg from "../assets/small1.png";
 function CartContent() {
   return (
     <>
-      <div className="cart__container__title">
+      {/* <div className="cart__container__title">
         <p>კალათა</p>
         <p>მთავარი / კალათა</p>
-      </div>
-      <div className="cart__container">
-        <div className="cart__items">
-          <div className="cart__left">
-            <div className="cart__title">
-              <p>პროდუქციის დასახელება</p>
-              <p>ფასი</p>
-              <p>რაოდენობა</p>
+      </div> */}
 
-              <p>ჯამი</p>
-            </div>
-            <div className="cart__item">
-              <div className="product__type">
-                <img className="cart__img" src={cartImg} />
-                <div className="cart__item__title">
-                  <p>რედუქსინი</p>
-                  <p>
-                    ანტების <br />
-                    საწინააღმდეგო{" "}
-                  </p>
-                </div>
-              </div>
-              <p className="item__price"> 20.00 ლ</p>
-              <div className="add__delete">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
-              </div>
-              <div>
-                <p>30.00 ლ</p>
-                <p className="delete__item">წაშლა</p>
+      <div className="cart__items">
+        <div className="cart__left">
+          <div className="cart__title">
+            <p>პროდუქციის დასახელება</p>
+            <p>ფასი</p>
+            <p>რაოდენობა</p>
+
+            <p>ჯამი</p>
+          </div>
+          <div className="cart__item">
+            <div className="product__type">
+              <img className="cart__img" src={cartImg} />
+              <div className="cart__item__title">
+                <p>რედუქსინი</p>
+                <p>
+                  ანტების <br />
+                  საწინააღმდეგო{" "}
+                </p>
               </div>
             </div>
-            <div className="cart__item">
-              <div className="product__type">
-                <img className="cart__img" src={cartImg} />
-                <div className="cart__item__title">
-                  <p>რედუქსინი</p>
-                  <p>
-                    ანტების <br />
-                    საწინააღმდეგო{" "}
-                  </p>
-                </div>
-              </div>
-              <p className="item__price"> 20.00 ლ</p>
-              <div className="add__delete">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
-              </div>
-              <div>
-                <p>30.00 ლ</p>
-                <p className="delete__item">წაშლა</p>
-              </div>
+            <p className="item__price"> 20.00 ლ</p>
+            <div className="add__delete">
+              <button>-</button>
+              <p>1</p>
+              <button>+</button>
+            </div>
+            <div>
+              <p>30.00 ლ</p>
+              <p className="delete__item">წაშლა</p>
             </div>
           </div>
-          <div className="cart__right">
-            <div className="product__price">
-              <p>პროდუქცია</p>
-              <p>234 ლარი</p>
+          <div className="cart__item">
+            <div className="product__type">
+              <img className="cart__img" src={cartImg} />
+              <div className="cart__item__title">
+                <p>რედუქსინი</p>
+                <p>
+                  ანტების <br />
+                  საწინააღმდეგო{" "}
+                </p>
+              </div>
             </div>
-            <div className="comission">
-              <p>მიტანის საკომისიო</p> <p>0 ლარი</p>
+            <p className="item__price"> 20.00 ლ</p>
+            <div className="add__delete">
+              <button>-</button>
+              <p>1</p>
+              <button>+</button>
             </div>
-            <div className="total">
-              <p>სულ</p> <p>234 ლარი</p>
+            <div>
+              <p>30.00 ლ</p>
+              <p className="delete__item">წაშლა</p>
             </div>
-            <button className="buy__btn">ყიდვა</button>
           </div>
+        </div>
+        <div className="cart__right">
+          <div className="product__price">
+            <p>პროდუქცია</p>
+            <p>234 ლარი</p>
+          </div>
+          <div className="comission">
+            <p>მიტანის საკომისიო</p> <p>0 ლარი</p>
+          </div>
+          <div className="total">
+            <p>სულ</p> <p>234 ლარი</p>
+          </div>
+          <button className="buy__btn">ყიდვა</button>
         </div>
       </div>
       <p className="warning">

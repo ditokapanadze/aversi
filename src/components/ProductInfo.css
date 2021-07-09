@@ -130,6 +130,28 @@
 }
 
 .heart__container:hover {
-  color: red;
   background-color: whitesmoke;
+}
+
+.product__info__container {
+}
+.info__container {
+  margin-right: 100px;
+}
+
+@media screen and (max-width: 1425px) {
+  .large__img {
+    width: 500px;
+  }
+  .large__img img {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 1220px) {
+  .large__img {
+    width: 400px;
+  }
+  .large__img img {
+    width: 350px;
+  }
 }

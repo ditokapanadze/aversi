@@ -1,6 +1,7 @@
 .anotation {
   max-width: 1400px;
   height: 1100px;
+  margin-right: 100px;
   border-radius: 0 10px 10px 10px;
   background-color: white;
 }

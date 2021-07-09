@@ -54,3 +54,8 @@ footer {
     padding: 50px 25px;
   }
 }
+@media screen and (max-width: 1180px) {
+  .footer__logo {
+    width: 200px;
+  }
+}

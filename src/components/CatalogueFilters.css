@@ -44,16 +44,20 @@ label:last-child {
   margin-left: 100px;
   margin-top: 50px;
   width: 340px;
-  height: 132px;
+
+  height: 160px;
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   color: #6a6a68;
 }
-
+.email__sales form {
+  display: flex;
+  flex-direction: row;
+}
 .email__sales p {
   line-height: 1.5;
   height: 50px;
@@ -78,4 +82,13 @@ label:last-child {
   cursor: pointer;
   color: whitesmoke;
   border-radius: 0px 50% 50% 0px;
+}
+
+@media screen and (max-width: 1400px) {
+  .filter {
+    margin-left: 50px;
+  }
+  .email__sales {
+    margin-left: 50px;
+  }
 }

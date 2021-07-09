@@ -1,7 +1,6 @@
 import React from "react";
 import "./Header.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
 import aversiLogo from "../assets/aversi-ltd.svg";
 
 function Header() {
@@ -9,7 +8,7 @@ function Header() {
     <header>
       <img className="logo" clas src={aversiLogo} />
 
-      <input className="search" type="text" placeholder="&#xF007; Search" />
+      <input className="search" type="text" placeholder="წამლის ძიება" />
       <div className="header__icons">
         {" "}
         <i className="far fa-user"></i>

@@ -20,7 +20,7 @@ function ProductInfo() {
           </div>
         </div>
         <div className="large__img">
-          <img src={large} />
+          <img className="large-img" src={large} />
         </div>
         <div className="info__container">
           <p>რედუქსინი</p>
