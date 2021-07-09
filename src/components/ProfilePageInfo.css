@@ -1,0 +1,65 @@
+.profie__info {
+  width: 700px;
+  height: 600px;
+  background-color: #ffff;
+  box-shadow: 0px 2px 2px #00000029;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.info__title {
+  font-size: 20px;
+  color: #7d8078;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.change__avatar {
+  border-bottom: 1px solid grey;
+  padding-bottom: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #7d8078;
+}
+.avatar img {
+  border-radius: 50%;
+  height: 100px;
+  margin-right: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+form * {
+  margin-bottom: 8px;
+}
+
+form input {
+  height: 35px;
+  background: #f9f9f9 0% 0% no-repeat padding-box;
+  border: 0.5px solid #707070ad;
+  border-radius: 5px;
+  width: 80%;
+  padding-left: 10px;
+  outline: none;
+  font-size: 16px;
+  color: #7d8078;
+}
+
+.save__btn {
+  background: #ec5257 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  border-style: none;
+  color: white;
+  height: 50px;
+  width: 130px;
+  font-size: 22px;
+  margin-top: 50px;
+}

@@ -9,6 +9,7 @@ import Catalogue from "./screens/Catalogue.js";
 import ProductPage from "./screens/ProductPage.js";
 import CartPage from "./screens/CartPage.js";
 import PaymantPage from "./screens/PaymantPage.js";
+import ProfilePage from "./screens/ProfilePage.js";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/product">
             <ProductPage />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage />
           </Route>
           <Route path="/cart">
             <CartPage />
