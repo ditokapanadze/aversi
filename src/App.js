@@ -10,16 +10,20 @@ import ProductPage from "./screens/ProductPage.js";
 import CartPage from "./screens/CartPage.js";
 import PaymantPage from "./screens/PaymantPage.js";
 import ProfilePage from "./screens/ProfilePage.js";
+import LoginPage from "./screens/LoginPage.js";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Navbar />
       <Router>
+        <Header />
+        <Navbar />
         <Switch>
           <Route path="/catalogue">
             <Catalogue />
+          </Route>
+          <Route path="/Login">
+            <LoginPage />
           </Route>
           <Route path="/product">
             <ProductPage />
