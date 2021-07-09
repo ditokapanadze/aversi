@@ -8,12 +8,12 @@ import Footer from "./components/Footer.js";
 import Catalogue from "./screens/Catalogue.js";
 import ProductPage from "./screens/ProductPage.js";
 import CartPage from "./screens/CartPage.js";
+import PaymantPage from "./screens/PaymantPage.js";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <div>test</div>
       <Navbar />
       <Router>
         <Switch>
@@ -25,6 +25,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <CartPage />
+          </Route>
+          <Route path="/sold">
+            <PaymantPage />
           </Route>
           <Route path="/">
             <Home />
