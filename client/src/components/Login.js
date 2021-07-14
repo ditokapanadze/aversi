@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Login.css";
 import { useHistory, history } from "react-router-dom";
-import e from "express";
 
 function Login() {
   const [hide, setHide] = useState(true);
@@ -23,11 +22,11 @@ function Login() {
     setNewUser(!newUser);
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("authToken")) {
-      history.push("/");
-    }
-  }, [history]);
+  // useEffect(() => {
+  //   if (localStorage.getItem("authToken")) {
+  //     history.push("/");
+  //   }
+  // }, [history]);
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -96,7 +95,7 @@ function Login() {
   return (
     <div className="login__container">
       {!newUser ? (
-        <form onSubmit={loginHandler} className="login__form">
+        <form className="login__form">
           <input className="mail__input" placeholder="ელ-ფოსტა" type="mail" />
           <div>
             <input
@@ -121,6 +120,10 @@ function Login() {
         <form onSubmit={registerHandler} className="signup__form">
           <span>
             <input type="mail" placeholder="ელ-ფოსტა" />
+            <i class="fas fa-asterisk"></i>
+          </span>
+          <span>
+            <input placeholder="მომხმარებლის სახელი" type="text" />
             <i class="fas fa-asterisk"></i>
           </span>
           <span>

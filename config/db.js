@@ -7,7 +7,7 @@ const connectDB = async () => {
     useUnifiedTopology: true,
     useFindAndModify: true,
   });
-  console.log("mongodv connected");
+  console.log("mongodb connected");
 };
 
 module.exports = connectDB;
