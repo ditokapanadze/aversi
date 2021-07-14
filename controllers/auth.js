@@ -4,21 +4,21 @@ const ErrorResponse = require("../utils/errorResponse");
 
 exports.register = async (req, res, next) => {
   const { username, email, password } = req.body;
+  console.log("exla");
   try {
     const user = await User.create({
       username,
       email,
       password,
     });
-    sendToken(user, 201, res);
-  } catch (error) {
-    next(error);
+
+    sendToken(user, 200, res);
+  } catch (err) {
+    next(err);
   }
 };
-
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
-
   // Check if email and password is provided
   if (!email || !password) {
     return next(new ErrorResponse("Please provide an email and password", 400));
@@ -72,9 +72,13 @@ exports.resetpassword = (req, res, next) => {
 };
 
 const sendToken = (user, statusCode, res) => {
+  console.log("tokenis funqcia");
   const token = user.getSighedToken();
+  console.log(token);
   res.status(statusCode).json({
     success: true,
     token,
+    email: user.email,
+    name: user.username,
   });
 };

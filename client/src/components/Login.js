@@ -54,9 +54,12 @@ function Login() {
       }, 5000);
     }
   };
-
+  let test = "sd";
   const registerHandler = async (e) => {
     e.preventDefault();
+    console.log(email);
+    console.log(username);
+    console.log(password);
     const config = {
       header: {
         "Content-Type": "application/json",
@@ -71,20 +74,18 @@ function Login() {
       }, 5000);
       return setError("paswords do not match");
     }
-
+    console.log("tet");
     try {
-      const { data } = await axios.post(
-        "/api/auth/register",
-        {
-          username,
-          email,
-          password,
-        },
-        config
-      );
+      const { data } = await axios.post("/api/auth/register", {
+        username,
+        email,
+        password,
+      });
+      console.log(data);
       localStorage.setItem("authToken", data.token);
       history.push("/");
     } catch (error) {
+      console.log(error);
       setError(error.response.data.error);
       setTimeout(() => {
         setError("");
@@ -119,19 +120,39 @@ function Login() {
       ) : (
         <form onSubmit={registerHandler} className="signup__form">
           <span>
-            <input type="mail" placeholder="ელ-ფოსტა" />
+            <input
+              type="mail"
+              placeholder="ელ-ფოსტა"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <i class="fas fa-asterisk"></i>
           </span>
           <span>
-            <input placeholder="მომხმარებლის სახელი" type="text" />
+            <input
+              placeholder="მომხმარებლის სახელი"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
             <i class="fas fa-asterisk"></i>
           </span>
           <span>
-            <input type="password" placeholder="პაროლი" />
+            <input
+              type="password"
+              placeholder="პაროლი"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <i class="fas fa-asterisk"></i>
           </span>
           <span>
-            <input type="password" placeholder="გაიემორეთ პაროლი" />
+            <input
+              type="password"
+              placeholder="გაიემორეთ პაროლი"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
             <i class="fas fa-asterisk"></i>
           </span>
           <input placeholder="მობილურის ნომერი" type="text" />

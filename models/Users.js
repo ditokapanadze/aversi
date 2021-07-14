@@ -48,7 +48,7 @@ UserSchema.methods.getSighedToken = function () {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: proces.env.JWT_EXPIRE,
+      expiresIn: process.env.JWT_EXPIRE,
     }
   );
 };
