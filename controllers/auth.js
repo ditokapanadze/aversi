@@ -10,7 +10,7 @@ exports.register = async (req, res, next) => {
       email,
       password,
     });
-    res.status(201).json({ success: true, user });
+    sendToken(user, 201, res);
   } catch (error) {
     next(error);
   }
@@ -45,9 +45,36 @@ exports.login = async (req, res, next) => {
   }
 };
 
-exports.forgotpassword = (req, res, next) => {
-  res.send("forgotpassword route");
+exports.forgotpassword = async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const user = await User.FondOne({ email });
+    if (!user) {
+      return next(new ErrorResponse("Email could not be send", 404));
+    }
+
+    const resetToken = user.getResetPasswordToken();
+
+    await user.save();
+
+    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+
+    const messsage = `<h1> you have requested a password reset </h1>
+    <p>Please go to this link to reset your password </p>
+    <a href=${resetUrl} clicktracking=off>${resetUrl}</a>`;
+
+    try {
+    } catch (error) {}
+  } catch (error) {}
 };
 exports.resetpassword = (req, res, next) => {
   res.send("resetpassword route");
+};
+
+const sendToken = (user, statusCode, res) => {
+  const token = user.getSighedToken();
+  res.status(statusCode).json({
+    success: true,
+    token,
+  });
 };
