@@ -41,16 +41,10 @@ UserSchema.methods.matchPasswords = async function (password) {
   return await bcrypt.compare.apply(password, this.password);
 };
 
-UserSchema.methods.getSighedToken = function () {
-  return jwt.sign(
-    {
-      id: this._id,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: process.env.JWT_EXPIRE,
-    }
-  );
+UserSchema.methods.getSignedJwtToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRE,
+  });
 };
 
 UserSchema.methods.getResetPasswordToken = function () {

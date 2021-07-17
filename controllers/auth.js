@@ -2,6 +2,7 @@ const User = require("../models/Users");
 const bcrypt = require("bcryptjs");
 const ErrorResponse = require("../utils/errorResponse");
 const sendEmail = require("../email");
+const crypto = require("crypto");
 
 exports.register = async (req, res, next) => {
   const { formData } = req.body;
@@ -106,8 +107,41 @@ exports.forgotpassword = async (req, res, next) => {
     next(err);
   }
 };
-exports.resetpassword = (req, res, next) => {
-  res.send("resetpassword route");
+exports.resetpassword = async (req, res, next) => {
+  const { pass } = req.body;
+
+  console.log(req.params);
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(req.params.resetToken)
+    .digest("hex");
+  console.log(resetPasswordToken);
+  try {
+    const user = await User.findOne({
+      resetPasswordToken,
+      resetPasswordExpire: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      console.log("ver ipova");
+    }
+
+    user.password = pass;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+    console.log(user);
+    await user.save();
+    console.log(user.getSignedJwtToken());
+    res.status(201).json({
+      success: true,
+      data: "Password Updated Success",
+      token: user.getSignedJwtToken(),
+    });
+  } catch (err) {
+    res.status(400).json({
+      err,
+    });
+  }
 };
 
 const sendToken = (user, statusCode, res) => {

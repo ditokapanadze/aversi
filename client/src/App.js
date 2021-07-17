@@ -11,6 +11,7 @@ import CartPage from "./screens/CartPage.js";
 import PaymantPage from "./screens/PaymantPage.js";
 import ProfilePage from "./screens/ProfilePage.js";
 import LoginPage from "./screens/LoginPage.js";
+import ForgotpasswordPage from "./screens/ForgotpasswordPage.js";
 import PrivateRoute from "./routing/PrivateRoute";
 
 function App() {
@@ -29,14 +30,15 @@ function App() {
           <Route path="/product">
             <ProductPage />
           </Route>
-
           <PrivateRoute path="/profile" component={ProfilePage} />
-
           <Route path="/cart">
             <CartPage />
           </Route>
           <Route path="/sold">
             <PaymantPage />
+          </Route>
+          <Route path="/passwordreset/:token">
+            <ForgotpasswordPage />
           </Route>
           <Route path="/">
             <Home />
