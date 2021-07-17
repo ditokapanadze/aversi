@@ -30,6 +30,9 @@ header {
   margin-top: 10px;
   margin-right: 20px;
 }
+.fas {
+  font-size: 25px !important;
+}
 
 @media screen and (max-width: 1400px) {
   header {

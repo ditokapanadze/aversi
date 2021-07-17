@@ -3,18 +3,20 @@ const bcrypt = require("bcryptjs");
 const ErrorResponse = require("../utils/errorResponse");
 
 exports.register = async (req, res, next) => {
-  const { username, email, password } = req.body;
-  console.log("exla");
+  const { formData } = req.body;
+  console.log(formData);
   try {
     const user = await User.create({
-      username,
-      email,
-      password,
+      username: formData.userName,
+      email: formData.email,
+      password: formData.password,
     });
 
     sendToken(user, 200, res);
   } catch (err) {
-    next(err);
+    res.status(200).json({
+      err,
+    });
   }
 };
 exports.login = async (req, res, next) => {

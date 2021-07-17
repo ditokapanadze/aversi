@@ -1,16 +1,19 @@
-import { restart } from "nodemon";
 import { Route, Redirect } from "react-router-dom";
 
 function PrivateRoute({ component: Component, ...rest }) {
+  const checkAuth = () => {
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      return false;
+    }
+
+    return true;
+  };
   return (
     <Route
       {...rest}
       render={(props) => {
-        localStorage.getItem("authToken") ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/login" />
-        );
+        checkAuth() ? <Component {...props} /> : <Redirect to="/login" />;
       }}
     />
   );

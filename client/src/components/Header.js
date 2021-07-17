@@ -11,12 +11,17 @@ function Header() {
 
       <input className="search" type="text" placeholder="წამლის ძიება" />
       <div className="header__icons">
-        <Link to="Login">
-          <i class="fas fa-sign-in-alt">შესვლა</i>
-        </Link>
-        <i className="far fa-user"></i>
-        <i className="far fa-heart"></i>
-        <i className="fas fa-cart-plus"></i>
+        {!localStorage.getItem("authToken") ? (
+          <Link to="Login">
+            <i class="fas fa-sign-in-alt">შესვლა</i>
+          </Link>
+        ) : (
+          <div>
+            <i className="far fa-user"></i>
+            <i className="far fa-heart"></i>
+            <i className="fas fa-cart-plus"></i>{" "}
+          </div>
+        )}
       </div>
     </header>
   );

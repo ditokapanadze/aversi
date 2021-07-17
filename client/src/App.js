@@ -11,6 +11,7 @@ import CartPage from "./screens/CartPage.js";
 import PaymantPage from "./screens/PaymantPage.js";
 import ProfilePage from "./screens/ProfilePage.js";
 import LoginPage from "./screens/LoginPage.js";
+import PrivateRoute from "./routing/PrivateRoute";
 
 function App() {
   return (
@@ -28,9 +29,10 @@ function App() {
           <Route path="/product">
             <ProductPage />
           </Route>
-          <Route path="/profile">
+
+          <PrivateRoute path="/profile">
             <ProfilePage />
-          </Route>
+          </PrivateRoute>
           <Route path="/cart">
             <CartPage />
           </Route>
