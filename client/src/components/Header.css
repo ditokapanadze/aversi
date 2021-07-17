@@ -33,7 +33,12 @@ header {
 .fas {
   font-size: 25px !important;
 }
-
+a {
+  background-color: aqua;
+}
+.fa-user {
+  padding-left: 0px;
+}
 @media screen and (max-width: 1400px) {
   header {
     padding: 20px 25px;

@@ -30,9 +30,8 @@ function App() {
             <ProductPage />
           </Route>
 
-          <PrivateRoute path="/profile">
-            <ProfilePage />
-          </PrivateRoute>
+          <PrivateRoute path="/profile" component={ProfilePage} />
+
           <Route path="/cart">
             <CartPage />
           </Route>

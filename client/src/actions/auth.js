@@ -23,3 +23,12 @@ export const login = (formData, history) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const getUser = (config) => async (dispatch) => {
+  try {
+    const { data } = await api.getUserInfo(config);
+    dispatch({ type: "GET_USER", data });
+  } catch (err) {
+    console.log(err);
+  }
+};

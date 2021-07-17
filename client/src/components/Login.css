@@ -21,6 +21,26 @@
 .mail__input {
   flex-grow: 1;
 }
+.resset__password {
+  cursor: pointer;
+  color: red;
+}
+
+.reset__form {
+}
+.reset__form input {
+  width: 350px;
+}
+.reset__form p {
+  text-align: center;
+  width: 350px;
+}
+
+.reset__form button {
+  width: 200px;
+  height: 35px;
+  font-size: 16px;
+}
 
 .password__input {
   margin-right: 12px;

@@ -1,6 +1,7 @@
 const User = require("../models/Users");
 const bcrypt = require("bcryptjs");
 const ErrorResponse = require("../utils/errorResponse");
+const sendEmail = require("../email");
 
 exports.register = async (req, res, next) => {
   const { formData } = req.body;
@@ -57,26 +58,53 @@ exports.login = async (req, res, next) => {
 };
 
 exports.forgotpassword = async (req, res, next) => {
-  const { email } = req.body;
+  // Send Email to email provided but first check if user exists
+  const { resetEmail } = req.body;
+  console.log("test");
+
   try {
-    const user = await User.FondOne({ email });
+    const user = await User.findOne({ email: resetEmail });
+    console.log(user);
     if (!user) {
-      return next(new ErrorResponse("Email could not be send", 404));
+      return next(new ErrorResponse("No email could not be sent", 404));
     }
 
+    // Reset Token Gen and add to database hashed (private) version of token
     const resetToken = user.getResetPasswordToken();
-
+    console.log(resetToken);
     await user.save();
 
+    // Create reset url to email to provided email
     const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
 
-    const messsage = `<h1> you have requested a password reset </h1>
-    <p>Please go to this link to reset your password </p>
-    <a href=${resetUrl} clicktracking=off>${resetUrl}</a>`;
+    // HTML Message
+    const message = `
+      <h1>You have requested a password reset</h1>
+      <p>Please make a put request to the following link:</p>
+      <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+    `;
 
     try {
-    } catch (error) {}
-  } catch (error) {}
+      await sendEmail({
+        to: user.email,
+        subject: "Password Reset Request",
+        text: message,
+      });
+
+      res.status(200).json({ success: true, data: "Email Sent" });
+    } catch (err) {
+      console.log(err);
+
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpire = undefined;
+
+      await user.save();
+
+      return next(new ErrorResponse("Email could not be sent", 500));
+    }
+  } catch (err) {
+    next(err);
+  }
 };
 exports.resetpassword = (req, res, next) => {
   res.send("resetpassword route");

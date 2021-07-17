@@ -6,23 +6,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup, login } from "../actions/auth";
 
 function Login() {
+  const [resetEmail, setResetEmail] = useState("");
   const [hide, setHide] = useState(true);
   const [newUser, setNewUser] = useState(false);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-
+  const [showReset, setShowReset] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
+  const [showSignup, setShowSignup] = useState(false);
+  const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   let history = useHistory();
 
   const hideShow = () => {
     setHide(!hide);
   };
-
+  const resetForm = () => {
+    setShowReset(true);
+    setShowLogin(false);
+    setShowSignup(false);
+  };
   const signUp = () => {
-    setNewUser(!newUser);
+    setShowSignup(true);
+    setShowReset(false);
+    setShowLogin(false);
   };
 
   const form = {
@@ -46,6 +51,29 @@ function Login() {
     e.preventDefault();
     console.log(formData);
     dispatch(login(formData, history));
+  };
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    console.log(resetEmail);
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/api/auth/forgotpassword",
+        { resetEmail },
+        config
+      );
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+    setMessage(
+      "პაროლის განსაახლებელი ლინკი გამოგზავნილია თქვენს მეილზე,გთხოვთ შეამოწმოთ სპამ ფოლდერიც. ლინკი აქტიურია 1 საათის განმავლობაში"
+    );
   };
   // useEffect(() => {
   //   if (localStorage.getItem("authToken")) {
@@ -118,7 +146,22 @@ function Login() {
 
   return (
     <div className="login__container">
-      {!newUser ? (
+      {showReset && (
+        <form className="reset__form">
+          <input
+            className="reset__input"
+            placeholder="ელ-ფოსტა"
+            type="email"
+            value={resetEmail}
+            onChange={(e) => setResetEmail(e.target.value)}
+          />
+          <button className="reset__btn" onClick={sendEmail}>
+            პაროლის აღდგენა
+          </button>
+          <p>{message}</p>
+        </form>
+      )}
+      {showLogin && (
         <form onSubmit={loginHandler} className="login__form">
           <input
             className="mail__input"
@@ -144,13 +187,17 @@ function Login() {
             )}
           </div>
           <button type="submit">შესვლა</button>
+          <p onClick={resetForm} class="resset__password">
+            პაროლის აღდგენა
+          </p>
           <p>
             {" "}
             არ გაქავთ საკუთარი ექაუნთი?{" "}
-            <span onClick={signUp}>დარეგისტრიდი</span>{" "}
+            <span onClick={signUp}>დარეგისტრიდი!</span>
           </p>
         </form>
-      ) : (
+      )}
+      {showSignup && (
         <form onSubmit={registerHandler} className="signup__form">
           <span>
             <input
