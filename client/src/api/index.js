@@ -6,3 +6,4 @@ const url = "http://localhost:5000/";
 
 export const signUp = (formData) =>
   API.post("/api/auth/register", { formData });
+export const login = (formData) => API.post("/api/auth/login", { formData });

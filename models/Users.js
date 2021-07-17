@@ -38,7 +38,7 @@ UserSchema.pre("save", async function (next) {
 });
 
 UserSchema.methods.matchPasswords = async function (password) {
-  return await bcrypt.compare.apply(password, this.passwords);
+  return await bcrypt.compare.apply(password, this.password);
 };
 
 UserSchema.methods.getSighedToken = function () {

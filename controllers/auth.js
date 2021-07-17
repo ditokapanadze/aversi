@@ -20,30 +20,39 @@ exports.register = async (req, res, next) => {
   }
 };
 exports.login = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { formData } = req.body;
+  console.log(formData.email);
   // Check if email and password is provided
-  if (!email || !password) {
+  if (!formData.email || !formData.password) {
     return next(new ErrorResponse("Please provide an email and password", 400));
   }
+
+  const email = formData.email;
 
   try {
     // Check that user exists by email
     const user = await User.findOne({ email }).select("+password");
-
+    console.log(user);
     if (!user) {
       return next(new ErrorResponse("Invalid credentials", 401));
     }
 
-    // Check that password match
-    const isMatch = await user.matchPassword(password);
+    console.log(formData.password);
+    const password = formData.password;
 
-    if (!isMatch) {
-      return next(new ErrorResponse("Invalid credentials", 401));
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    console.log("isPasswordCorrect");
+    console.log(user);
+    // Check that password match
+    // const isMatch = await User.matchPassword(password);
+    // console.log(isMatch);
+    if (!isPasswordCorrect) {
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
     sendToken(user, 200, res);
   } catch (err) {
-    next(err);
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 

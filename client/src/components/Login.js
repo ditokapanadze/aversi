@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Login.css";
 import { useHistory, history } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../actions/auth";
+import { signup, login } from "../actions/auth";
 
 function Login() {
   const [hide, setHide] = useState(true);
@@ -42,6 +42,11 @@ function Login() {
     dispatch(signup(formData, history));
   };
 
+  const loginHandler = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    dispatch(login(formData, history));
+  };
   // useEffect(() => {
   //   if (localStorage.getItem("authToken")) {
   //     history.push("/");
@@ -114,10 +119,20 @@ function Login() {
   return (
     <div className="login__container">
       {!newUser ? (
-        <form className="login__form">
-          <input className="mail__input" placeholder="ელ-ფოსტა" type="mail" />
+        <form onSubmit={loginHandler} className="login__form">
+          <input
+            className="mail__input"
+            placeholder="ელ-ფოსტა"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
           <div>
             <input
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               className="password__input"
               placeholder="პასვორდი"
               type={hide ? "password" : "text"}
