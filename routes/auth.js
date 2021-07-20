@@ -7,11 +7,13 @@ const {
   login,
   forgotpassword,
   resetpassword,
+  changeAvatar,
 } = require("../controllers/auth");
 
 // იგივეა რაც  router..port("/register", register)
 router.route("/register").post(register);
 router.route("/login").post(login);
+
 router.route("/forgotpassword").post(forgotpassword);
 router.route("/resetpassword/:resetToken").put(resetpassword);
 

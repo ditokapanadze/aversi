@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const ErrorResponse = require("../utils/errorResponse");
 const sendEmail = require("../email");
 const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res, next) => {
   const { formData } = req.body;
@@ -107,6 +108,24 @@ exports.forgotpassword = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.changeAvatar = async (req, res) => {
+  const { photo, token } = req.body;
+  // console.log(photo.base64);
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const updatePhoto = await User.findByIdAndUpdate(
+      { _id: decoded.id },
+      { photo: photo.base64 },
+      { new: true }
+    );
+    res.json(updatePhoto);
+  } catch (err) {
+    console.log(err);
+  }
+};
 exports.resetpassword = async (req, res, next) => {
   const { pass } = req.body;
 
@@ -146,7 +165,7 @@ exports.resetpassword = async (req, res, next) => {
 
 const sendToken = (user, statusCode, res) => {
   console.log("tokenis funqcia");
-  const token = user.getSighedToken();
+  const token = user.getSignedJwtToken();
   console.log(token);
   res.status(statusCode).json({
     success: true,

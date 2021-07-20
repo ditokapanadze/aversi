@@ -32,7 +32,7 @@ function Header() {
     //   .get("http://localhost:5000/api/private", config)
     //   .then((res) => console.log(res))
     //   .catch((err) => console.log(err));
-  }, []);
+  }, [dispatch]);
   console.log(auth);
   return (
     <header>
