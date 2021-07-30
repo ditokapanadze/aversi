@@ -75,7 +75,7 @@ function ProfilePageInfo() {
         <button onClick={() => setShowUpload(true)}>ავატარის შეცვლა</button>
       )}
 
-      <p>{auth?.user?.username}</p>
+      <p> მომხმარებლის სახელი : {auth?.user?.username}</p>
       <form onSubmit={updateInfo}>
         <p>მობილურის ნომერი:</p>
         <input
