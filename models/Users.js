@@ -23,6 +23,17 @@ const UserSchema = new mongoose.Schema({
     minlength: 6,
     select: false,
   },
+  mobileNumber: { type: String, required: false, default: "" },
+  adress: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  photo: {
+    type: String,
+    default:
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png",
+  },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });
@@ -38,19 +49,13 @@ UserSchema.pre("save", async function (next) {
 });
 
 UserSchema.methods.matchPasswords = async function (password) {
-  return await bcrypt.compare.apply(password, this.passwords);
+  return await bcrypt.compare.apply(password, this.password);
 };
 
-UserSchema.methods.getSighedToken = function () {
-  return jwt.sign(
-    {
-      id: this._id,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: proces.env.JWT_EXPIRE,
-    }
-  );
+UserSchema.methods.getSignedJwtToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRE,
+  });
 };
 
 UserSchema.methods.getResetPasswordToken = function () {

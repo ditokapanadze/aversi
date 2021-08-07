@@ -1,7 +1,15 @@
 import React from "react";
 import "./Navbar.css";
+import jwt_decode from "jwt-decode";
 
 function Navbar() {
+  // const decode = () => {
+  //   var token = localStorage.getItem("authToken");
+  //   var decoded = jwt_decode(token);
+
+  //   console.log(decoded);
+  // };
+  // decode();
   return (
     <div className="navbar">
       <ul className="nav__ul">
