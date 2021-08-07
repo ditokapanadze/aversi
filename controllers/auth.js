@@ -7,9 +7,8 @@ const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res, next) => {
   const { formData } = req.body;
-  console.log(formData);
+
   try {
-    console.log("test usershi shevida");
     const user = await User.create({
       username: formData.userName,
       email: formData.email,
@@ -17,10 +16,9 @@ exports.register = async (req, res, next) => {
       adress: formData.adress,
       mobileNumber: formData.number,
     });
-    console.log("useris mere");
+
     sendToken(user, 200, res);
   } catch (err) {
-    console.log(err);
     res.status(200).json({
       err,
     });
@@ -28,7 +26,7 @@ exports.register = async (req, res, next) => {
 };
 exports.login = async (req, res, next) => {
   const { formData } = req.body;
-  console.log(formData.email);
+
   // Check if email and password is provided
   if (!formData.email || !formData.password) {
     return next(new ErrorResponse("Please provide an email and password", 400));
@@ -39,17 +37,15 @@ exports.login = async (req, res, next) => {
   try {
     // Check that user exists by email
     const user = await User.findOne({ email }).select("+password");
-    console.log(user);
+
     if (!user) {
       return res.status(401).json({ message: "იმეილი არასწორია" });
     }
 
-    console.log(formData.password);
     const password = formData.password;
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
-    console.log("isPasswordCorrect");
-    console.log(user);
+
     // Check that password match
     // const isMatch = await User.matchPassword(password);
     // console.log(isMatch);
@@ -66,18 +62,17 @@ exports.login = async (req, res, next) => {
 exports.forgotpassword = async (req, res, next) => {
   // Send Email to email provided but first check if user exists
   const { resetEmail } = req.body;
-  console.log("test");
 
   try {
     const user = await User.findOne({ email: resetEmail });
-    console.log(user);
+
     if (!user) {
       return next(new ErrorResponse("No email could not be sent", 404));
     }
 
     // Reset Token Gen and add to database hashed (private) version of token
     const resetToken = user.getResetPasswordToken();
-    console.log(resetToken);
+
     await user.save();
 
     // Create reset url to email to provided email
@@ -99,8 +94,6 @@ exports.forgotpassword = async (req, res, next) => {
 
       res.status(200).json({ success: true, data: "Email Sent" });
     } catch (err) {
-      console.log(err);
-
       user.resetPasswordToken = undefined;
       user.resetPasswordExpire = undefined;
 
@@ -127,18 +120,17 @@ exports.changeAvatar = async (req, res) => {
     );
     res.json(updatePhoto);
   } catch (err) {
-    console.log(err);
+    console.log("err");
   }
 };
 exports.resetpassword = async (req, res, next) => {
   const { pass } = req.body;
 
-  console.log(req.params);
   const resetPasswordToken = crypto
     .createHash("sha256")
     .update(req.params.resetToken)
     .digest("hex");
-  console.log(resetPasswordToken);
+
   try {
     const user = await User.findOne({
       resetPasswordToken,
@@ -152,9 +144,9 @@ exports.resetpassword = async (req, res, next) => {
     user.password = pass;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
-    console.log(user);
+
     await user.save();
-    console.log(user.getSignedJwtToken());
+
     res.status(201).json({
       success: true,
       data: "Password Updated Success",
@@ -170,7 +162,7 @@ exports.resetpassword = async (req, res, next) => {
 const sendToken = (user, statusCode, res) => {
   console.log("tokenis funqcia");
   const token = user.getSignedJwtToken();
-  console.log(token);
+
   res.status(statusCode).json({
     success: true,
     token,

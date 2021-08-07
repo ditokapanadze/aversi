@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 function Home() {
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
+
   return (
     <div className="home">
       <BackgroundBanner />

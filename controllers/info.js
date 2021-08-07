@@ -25,9 +25,7 @@ exports.changeAvatar = async (req, res) => {
 
 exports.changeInfo = async (req, res) => {
   const { number, adress, token } = req.body;
-  console.log(number);
-  console.log(token);
-  console.log("test");
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById({ _id: decoded.id });

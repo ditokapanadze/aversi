@@ -8,7 +8,8 @@
   box-shadow: 0px 5px 5px #0000000d;
   background-color: white;
 }
-
+.catalogue {
+}
 .catalogue__item__header {
   width: 100%;
   display: flex;
@@ -16,8 +17,12 @@
 }
 
 .catalogue__item__img {
+  height: 150px;
 }
-
+.catalogue__container {
+  background-color: aquamarine;
+  position: relative;
+}
 .catalogue__item__button {
   width: 100px;
   height: 25px;
