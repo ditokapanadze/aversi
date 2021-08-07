@@ -25,6 +25,7 @@ function Catalogue() {
   const increment = () => {
     page + 1 <= pages && setPage((prevState) => prevState + 1);
   };
+  console.log(product);
   return (
     <>
       <CatalogueHeader />
@@ -33,6 +34,8 @@ function Catalogue() {
         <div className="catalogue__container">
           {product.map((item) => (
             <CatalogueItems
+              key={item._id}
+              id={item._id}
               photoUrl={item.photo}
               name={item.name}
               type={item.type}

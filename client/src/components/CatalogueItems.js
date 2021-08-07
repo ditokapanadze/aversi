@@ -1,11 +1,16 @@
 import React from "react";
 import star from "../assets/star.png";
 import medicine from "../assets/medicine.png";
+import { useHistory } from "react-router";
 import "./CatalogueItems.css";
 
-function CatalogueItems({ photoUrl, name, type, price }) {
+function CatalogueItems({ photoUrl, name, type, price, id }) {
+  let history = useHistory();
   return (
-    <div className="catalogue__item">
+    <div
+      onClick={() => history.push(`product/${id}`)}
+      className="catalogue__item"
+    >
       <div className="catalogue__item__header">
         <div className="stars">
           {" "}

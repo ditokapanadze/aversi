@@ -27,7 +27,7 @@ function App() {
           <Route path="/Login">
             <LoginPage />
           </Route>
-          <Route path="/product">
+          <Route path="/product/:id">
             <ProductPage />
           </Route>
           <PrivateRoute path="/profile" component={ProfilePage} />

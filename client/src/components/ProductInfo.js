@@ -3,12 +3,21 @@ import "./ProductInfo.css";
 import small from "../assets/small1.png";
 import large from "../assets/large1.png";
 
-function ProductInfo() {
+function ProductInfo({
+  photo,
+  name,
+  price,
+  type,
+  form,
+  code,
+  producer,
+  country,
+}) {
   return (
     <>
       <div className="product__page__header">
-        <p>რედუქსინი</p>
-        <p>მთავარი / კატალოგი / წამლები / რედუქსინი</p>
+        <p>{name}</p>
+        <p>მთავარი / კატალოგი / წამლები / {name}</p>
       </div>
       <div className="product__info__container">
         <div className="small__imgs">
@@ -20,16 +29,16 @@ function ProductInfo() {
           </div>
         </div>
         <div className="large__img">
-          <img className="large-img" src={large} />
+          <img className="large-img" src={photo} />
         </div>
         <div className="info__container">
-          <p>რედუქსინი</p>
-          <p>9.50 ლარი</p>
-          <p>ანთების საქინააღმდეგო პრეპარატი</p>
-          <p>ქვეყანა: დიდი ბრიტანეთი</p>
-          <p>მწარმოებელი: რეკიტ ბენკისერი</p>
-          <p>გაცემის ფორმა: III ჯგუფი ურეცეპტო</p>
-          <p>კოდი: 845</p>
+          <p>{name}</p>
+          <p>{price} ლარი</p>
+          <p>{type}</p>
+          <p>ქვეყანა: {country}</p>
+          <p>მწარმოებელი: {producer}</p>
+          <p>გაცემის ფორმა: {form}</p>
+          <p>კოდი: {code}</p>
           <div className="quantity">
             <div className="value">0</div>
             <div className="operators">

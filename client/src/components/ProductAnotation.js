@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProductAnotation.css";
 
-function ProductAnotation() {
+function ProductAnotation({ anotation }) {
   return (
     <div className="product__anotation">
       <div className="anotation__title">
@@ -10,11 +10,11 @@ function ProductAnotation() {
       </div>
 
       <div className="anotation">
-        <div className="composition">
+        {/* <div className="composition">
           შემადგენლობა შემადგენლობა შემადგენლობა შემადგენლობა შემადგენლობა
           შემადგენლობა შემადგენლობა შემადგენლობა შემადგენლობა
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <p className="name">რედუქსინი</p>
           <p className="eng__name">საერთაშორისო დასახელება - raduksin</p>
           <p className="group">
@@ -38,7 +38,8 @@ function ProductAnotation() {
             ასდასდასდა დასდ ასდა დ არასტერილური ბაასდ ასდასდასდა დასდ ასდა დ
             არასტერილური ბაასდ ასდასდასდა დასდ ასდა დ
           </p>
-        </div>
+        </div> */}
+        <p>{anotation}</p>
       </div>
     </div>
   );
