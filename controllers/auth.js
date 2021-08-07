@@ -9,14 +9,18 @@ exports.register = async (req, res, next) => {
   const { formData } = req.body;
   console.log(formData);
   try {
+    console.log("test usershi shevida");
     const user = await User.create({
       username: formData.userName,
       email: formData.email,
       password: formData.password,
+      adress: formData.adress,
+      mobileNumber: formData.number,
     });
-
+    console.log("useris mere");
     sendToken(user, 200, res);
   } catch (err) {
+    console.log(err);
     res.status(200).json({
       err,
     });
@@ -37,7 +41,7 @@ exports.login = async (req, res, next) => {
     const user = await User.findOne({ email }).select("+password");
     console.log(user);
     if (!user) {
-      return next(new ErrorResponse("Invalid credentials", 401));
+      return res.status(401).json({ message: "იმეილი არასწორია" });
     }
 
     console.log(formData.password);
@@ -50,7 +54,7 @@ exports.login = async (req, res, next) => {
     // const isMatch = await User.matchPassword(password);
     // console.log(isMatch);
     if (!isPasswordCorrect) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: "პასვორდი არასწორია" });
     }
 
     sendToken(user, 200, res);

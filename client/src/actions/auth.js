@@ -21,6 +21,8 @@ export const login = (formData, history) => async (dispatch) => {
     history.push("/");
   } catch (error) {
     console.log(error);
+    let message = error.response.data.message;
+    dispatch({ type: "AUTH_ERR", message });
   }
 };
 

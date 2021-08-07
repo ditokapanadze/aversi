@@ -13,9 +13,11 @@ function Login() {
   const [showLogin, setShowLogin] = useState(true);
   const [showSignup, setShowSignup] = useState(false);
   const [message, setMessage] = useState("");
+
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   let history = useHistory();
-
+  console.log(auth);
   const hideShow = () => {
     setHide(!hide);
   };
@@ -186,6 +188,7 @@ function Login() {
               <i onClick={hideShow} class="fas fa-eye-slash"></i>
             )}
           </div>
+          <p className="err__message">{auth.message}</p>
           <button type="submit">შესვლა</button>
           <p onClick={resetForm} class="resset__password">
             პაროლის აღდგენა
@@ -239,8 +242,20 @@ function Login() {
             />
             <i class="fas fa-asterisk"></i>
           </span>
-          <input placeholder="მობილურის ნომერი" type="text" />
-          <input placeholder="მისამართი" type="text" />
+          <input
+            type="number"
+            name="number"
+            onChange={handleChange}
+            placeholder="მობილურის ნომერი"
+            type="text"
+          />
+          <input
+            type="adress"
+            name="adress"
+            onChange={handleChange}
+            placeholder="მისამართი"
+            type="text"
+          />
           <button type="submit">რეგისტრაცია</button>
           <p>უკვე გაქვ ექაუნთი?</p>
           <p>

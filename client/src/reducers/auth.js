@@ -3,6 +3,7 @@ const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: null,
+  message: "",
 };
 
 const authReducers = (state = initialState, action) => {
@@ -14,6 +15,10 @@ const authReducers = (state = initialState, action) => {
       console.log(action.data);
       localStorage.setItem("authToken", action.data.token);
       return { ...state, authData: action.data };
+    case "AUTH_ERR":
+      console.log("test");
+      console.log(action.message);
+      return { ...state, message: action.message };
     case "GET_USER":
       // console.log(action.data.user);
       return { ...state, user: action.data.user };

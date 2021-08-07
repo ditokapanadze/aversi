@@ -20,9 +20,11 @@ header {
 .header__icons {
   display: flex;
   margin-left: 20px;
+  align-items: center;
+  justify-content: center;
 }
 .header__icons * {
-  margin-right: 20px;
+  /* margin-right: 20px; */
   color: var(--main-red);
   font-size: 25px;
 }
@@ -33,7 +35,15 @@ header {
 .fas {
   font-size: 25px !important;
 }
-
+.far {
+}
+.far,
+.fas {
+  margin-right: 20px;
+}
+.fa-sign-out-alt {
+  font-size: 30px !important;
+}
 .fa-user {
   padding-left: 0px;
 }

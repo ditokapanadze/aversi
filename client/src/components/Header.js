@@ -3,7 +3,7 @@ import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import aversiLogo from "../assets/aversi-ltd.svg";
-import decode from "jwt-decode";
+
 import { useHistory } from "react-router-dom";
 
 import { getUser } from "../actions/auth";
@@ -52,6 +52,12 @@ function Header() {
             <i className="far fa-heart"></i>
             <Link to="/cart">
               <i className="fas fa-cart-plus"></i>
+            </Link>
+            <Link to="/">
+              <i
+                onClick={() => localStorage.clear()}
+                class="fas fa-sign-out-alt"
+              ></i>
             </Link>
           </div>
         )}
