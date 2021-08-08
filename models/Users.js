@@ -34,6 +34,14 @@ const UserSchema = new mongoose.Schema({
     default:
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png",
   },
+  basket: {
+    type: Array,
+    default: [],
+  },
+  test: {
+    type: String,
+    default: "Test",
+  },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });

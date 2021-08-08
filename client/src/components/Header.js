@@ -41,7 +41,7 @@ function Header() {
       <input className="search" type="text" placeholder="წამლის ძიება" />
       <div className="header__icons">
         {!auth.token ? (
-          <Link to="Login">
+          <Link to="/Login">
             <i class="fas fa-sign-in-alt">შესვლა</i>
           </Link>
         ) : (

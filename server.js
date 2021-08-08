@@ -15,7 +15,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/product", require("./routes/product"));
 app.use("/api/private", require("./routes/private"));
 app.use("/api/infoupdate", require("./routes/infoUpdate"));
-
+app.use("/api/basket", require("./routes/basket"));
 // ეს ყოველთვის ბოლო უნდა იყოს
 app.use(errorHandler);
 

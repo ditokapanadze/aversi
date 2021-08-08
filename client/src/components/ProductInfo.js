@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductInfo.css";
 import small from "../assets/small1.png";
 import large from "../assets/large1.png";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 function ProductInfo({
   photo,
@@ -12,7 +14,28 @@ function ProductInfo({
   code,
   producer,
   country,
+  id,
 }) {
+  const [quantity, setQuantity] = useState(1);
+
+  const auth = useSelector((state) => state.auth);
+
+  const increment = () => {
+    setQuantity((prevState) => prevState + 1);
+  };
+
+  const decrement = () => {
+    quantity > 1 && setQuantity((prevState) => prevState - 1);
+  };
+  const addToBasket = (id) => {
+    axios
+      .put(`http://localhost:5000/api/basket/addToBasket/${id}`, {
+        auth,
+        quantity,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <div className="product__page__header">
@@ -40,14 +63,21 @@ function ProductInfo({
           <p>გაცემის ფორმა: {form}</p>
           <p>კოდი: {code}</p>
           <div className="quantity">
-            <div className="value">0</div>
+            <div className="value">{quantity}</div>
             <div className="operators">
-              <button className="plus">+</button>
-              <button className="minus">−</button>
+              <button onClick={increment} className="plus">
+                +
+              </button>
+              <button onClick={decrement} className="minus">
+                −
+              </button>
             </div>
           </div>
+
           <div className="add__basket">
-            <button className="add__btn">კალათაში დამატება</button>{" "}
+            <button onClick={() => addToBasket(id)} className="add__btn">
+              კალათაში დამატება
+            </button>{" "}
             <div className="heart__container">
               <i class="far fa-heart"></i>
             </div>

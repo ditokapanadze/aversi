@@ -18,6 +18,7 @@ function ProductPage() {
   return (
     <>
       <ProductInfo
+        id={product._id}
         photo={product.photo}
         name={product.name}
         price={product.price}

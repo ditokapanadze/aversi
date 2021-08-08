@@ -110,7 +110,14 @@
   background-color: #f4f2f0;
   font-size: 22px;
   cursor: pointer;
+  transition: all 0.3s;
 }
+
+.add__btn:hover {
+  background-color: #ea3339;
+  color: #f4f2f0;
+}
+
 .heart__container {
   width: 81px;
   height: 62px;
