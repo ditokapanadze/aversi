@@ -20,10 +20,10 @@ exports.addToBasket = async (req, res, next) => {
       }
     };
     add();
-    console.log(test.basket);
+
     const user = await User.findByIdAndUpdate(
       user_id,
-      { basket: productObject },
+      { basket: test.basket.concat(productObject) },
       { new: true }
     );
   } catch (err) {

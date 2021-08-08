@@ -1,8 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CartContent.css";
 import cartImg from "../assets/small1.png";
-
+import { useSelector } from "react-redux";
 function CartContent() {
+  const basket = useSelector((state) => state.auth.user?.basket);
+
+  let group = basket?.reduce((r, a) => {
+    r[a._id] = [...(r[a._id] || []), a];
+    return r;
+  }, {});
+  console.log(group);
+  const cars = [
+    {
+      make: "audi",
+    },
+    {
+      make: "audi",
+    },
+    {
+      make: "ford",
+    },
+    {
+      make: "ford",
+    },
+    {
+      make: "kia",
+    },
+  ];
+
+  let group1 = cars.reduce((r, a) => {
+    r[a.make] = [...(r[a.make] || []), a];
+    return r;
+  }, {});
+  // console.log(group1.kia);
+
+  let counter = {};
+  let sortedProduct = [];
+
+  basket?.forEach(function (obj) {
+    var key = JSON.stringify(obj);
+    counter[key] = (counter[key] || 0) + 1;
+  });
+  // const makeArr = () => {
+  //   let test = Object.keys(counter);
+  //   let test1 = Object.values(counter);
+  //   console.log(test1);
+  //   console.log(JSON.parse(test[1]));
+  //   for (var i = 0; i < test.length; i++) {
+  //     counter1.push(JSON.parse(test[i]));
+  //     counter1[i].quantity = test1[i];
+  //   }
+  // };
+
+  const makeArr = () => {
+    let key = Object.keys(counter);
+    let value = Object.values(counter);
+    console.log(key);
+    console.log(value);
+    // console.log(test1);
+    // console.log(JSON.parse(test[1]));
+    for (var i = 0; i < key.length; i++) {
+      sortedProduct.push(JSON.parse(key[i]));
+      sortedProduct[i].quantity = value[i];
+    }
+  };
+  makeArr();
+  console.log(sortedProduct);
+  sortedProduct.map((item) => console.log(item));
   return (
     <>
       {/* <div className="cart__container__title">
@@ -19,50 +83,30 @@ function CartContent() {
 
             <p>ჯამი</p>
           </div>
-          <div className="cart__item">
-            <div className="product__type">
-              <img className="cart__img" src={cartImg} />
-              <div className="cart__item__title">
-                <p>რედუქსინი</p>
-                <p>
-                  ანტების <br />
-                  საწინააღმდეგო{" "}
-                </p>
+
+          {sortedProduct?.map((item) => (
+            <>
+              <div className="cart__item">
+                <div className="product__type">
+                  <img className="cart__img" src={item.photo} />
+                  <div className="cart__item__title">
+                    <p>{item.name}</p>
+                    <p className="type">{item.type}</p>
+                  </div>
+                </div>
+                <p className="item__price">{item.price}</p>
+                <div className="add__delete">
+                  <button>-</button>
+                  <p>{item.quantity}</p>
+                  <button>+</button>
+                </div>
+                <div>
+                  <p>30.00 ლ</p>
+                  <p className="delete__item">წაშლა</p>
+                </div>
               </div>
-            </div>
-            <p className="item__price"> 20.00 ლ</p>
-            <div className="add__delete">
-              <button>-</button>
-              <p>1</p>
-              <button>+</button>
-            </div>
-            <div>
-              <p>30.00 ლ</p>
-              <p className="delete__item">წაშლა</p>
-            </div>
-          </div>
-          <div className="cart__item">
-            <div className="product__type">
-              <img className="cart__img" src={cartImg} />
-              <div className="cart__item__title">
-                <p>რედუქსინი</p>
-                <p>
-                  ანტების <br />
-                  საწინააღმდეგო{" "}
-                </p>
-              </div>
-            </div>
-            <p className="item__price"> 20.00 ლ</p>
-            <div className="add__delete">
-              <button>-</button>
-              <p>1</p>
-              <button>+</button>
-            </div>
-            <div>
-              <p>30.00 ლ</p>
-              <p className="delete__item">წაშლა</p>
-            </div>
-          </div>
+            </>
+          ))}
         </div>
         <div className="cart__right">
           <div className="product__price">

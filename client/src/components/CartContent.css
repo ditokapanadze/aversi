@@ -19,6 +19,9 @@
 .cart__left {
   width: 1000px;
 }
+.type {
+  width: 150px;
+}
 .cart__title {
   height: 50px;
   display: flex;

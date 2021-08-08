@@ -4,7 +4,6 @@ const initialState = {
   isLoading: false,
   user: null,
   message: "",
-  basket: [],
 };
 
 const authReducers = (state = initialState, action) => {
