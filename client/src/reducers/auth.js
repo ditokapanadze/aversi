@@ -20,8 +20,11 @@ const authReducers = (state = initialState, action) => {
       console.log(action.message);
       return { ...state, message: action.message };
     case "GET_USER":
-      // console.log(action.data.user);
+      console.log(action.user);
       return { ...state, user: action.data.user };
+    case "NEW_BASKET":
+      console.log(action);
+      return { ...state, user: action.user };
     default:
       return state;
   }

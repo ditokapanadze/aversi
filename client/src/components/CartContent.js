@@ -1,37 +1,12 @@
 import React, { useState } from "react";
 import "./CartContent.css";
 import cartImg from "../assets/small1.png";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 function CartContent() {
+  let dispatch = useDispatch();
   const basket = useSelector((state) => state.auth.user?.basket);
-
-  let group = basket?.reduce((r, a) => {
-    r[a._id] = [...(r[a._id] || []), a];
-    return r;
-  }, {});
-  console.log(group);
-  const cars = [
-    {
-      make: "audi",
-    },
-    {
-      make: "audi",
-    },
-    {
-      make: "ford",
-    },
-    {
-      make: "ford",
-    },
-    {
-      make: "kia",
-    },
-  ];
-
-  let group1 = cars.reduce((r, a) => {
-    r[a.make] = [...(r[a.make] || []), a];
-    return r;
-  }, {});
+  const user_id = useSelector((state) => state.auth.user?._id);
   // console.log(group1.kia);
 
   let counter = {};
@@ -67,6 +42,22 @@ function CartContent() {
   makeArr();
   console.log(sortedProduct);
   sortedProduct.map((item) => console.log(item));
+
+  const changeBasket = (e, product_id) => {
+    console.log(product_id);
+    const value = e.target.value;
+    axios
+      .put(`api/basket/changeBasket/${product_id}`, {
+        user_id,
+        value,
+      })
+      .then((res) => {
+        const user = res.data.data;
+        console.log(user);
+        dispatch({ type: "NEW_BASKET", user: user });
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       {/* <div className="cart__container__title">
@@ -85,27 +76,32 @@ function CartContent() {
           </div>
 
           {sortedProduct?.map((item) => (
-            <>
-              <div className="cart__item">
-                <div className="product__type">
-                  <img className="cart__img" src={item.photo} />
-                  <div className="cart__item__title">
-                    <p>{item.name}</p>
-                    <p className="type">{item.type}</p>
-                  </div>
-                </div>
-                <p className="item__price">{item.price}</p>
-                <div className="add__delete">
-                  <button>-</button>
-                  <p>{item.quantity}</p>
-                  <button>+</button>
-                </div>
-                <div>
-                  <p>30.00 ლ</p>
-                  <p className="delete__item">წაშლა</p>
+            <div className="cart__item" key={item._id}>
+              <div className="product__type">
+                <img className="cart__img" src={item.photo} />
+                <div className="cart__item__title">
+                  <p>{item.name}</p>
+                  <p className="type">{item.type}</p>
                 </div>
               </div>
-            </>
+              <p className="item__price">{item.price}</p>
+              <div className="add__delete">
+                <button
+                  value="delete"
+                  onClick={(e) => changeBasket(e, item._id)}
+                >
+                  -
+                </button>
+                <p>{item.quantity}</p>
+                <button value="add" onClick={(e) => changeBasket(e, item._id)}>
+                  +
+                </button>
+              </div>
+              <div>
+                <p>30.00 ლ</p>
+                <p className="delete__item">წაშლა</p>
+              </div>
+            </div>
           ))}
         </div>
         <div className="cart__right">
