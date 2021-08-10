@@ -28,19 +28,15 @@ function Header() {
     };
 
     dispatch(getUser(config));
-    // axios
-    //   .get("http://localhost:5000/api/private", config)
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
   }, [dispatch]);
-  console.log(auth);
+
   return (
     <header>
       <img className="logo" clas src={aversiLogo} />
 
       <input className="search" type="text" placeholder="წამლის ძიება" />
       <div className="header__icons">
-        {!auth.token ? (
+        {!auth.user ? (
           <Link to="/Login">
             <i class="fas fa-sign-in-alt">შესვლა</i>
           </Link>

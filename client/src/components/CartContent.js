@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CartContent.css";
 import cartImg from "../assets/small1.png";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 function CartContent() {
+  const [total, setTotal] = useState("");
   let dispatch = useDispatch();
   const basket = useSelector((state) => state.auth.user?.basket);
   const user_id = useSelector((state) => state.auth.user?._id);
@@ -58,6 +59,15 @@ function CartContent() {
       })
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    const countTotal = sortedProduct.reduce(
+      (acc, val) => acc + val.price * val.quantity,
+      0
+    );
+    setTotal(countTotal);
+  }, [changeBasket]);
+
   return (
     <>
       {/* <div className="cart__container__title">
@@ -98,7 +108,7 @@ function CartContent() {
                 </button>
               </div>
               <div>
-                <p>30.00 ლ</p>
+                <p>{item.price * item.quantity}</p>
                 <p className="delete__item">წაშლა</p>
               </div>
             </div>
@@ -107,13 +117,13 @@ function CartContent() {
         <div className="cart__right">
           <div className="product__price">
             <p>პროდუქცია</p>
-            <p>234 ლარი</p>
+            <p>{total} ლარი</p>
           </div>
           <div className="comission">
             <p>მიტანის საკომისიო</p> <p>0 ლარი</p>
           </div>
           <div className="total">
-            <p>სულ</p> <p>234 ლარი</p>
+            <p>სულ</p> <p>{total} ლარი</p>
           </div>
           <button className="buy__btn">ყიდვა</button>
         </div>

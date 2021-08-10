@@ -8,34 +8,35 @@ const Product = require("../models/Products");
 
 exports.addToBasket = async (req, res, next) => {
   console.log("resr");
-  // const { id } = req.params;
+  const { id } = req.params;
   // const user_id = req.body.auth.user._id;
-  // const quantity = req.body.quantity;
-  // try {
-  //   const product = await Product.findById(id);
-  //   const test = await User.findById(user_id);
-  //   productObject = [];
-  //   const add = () => {
-  //     for (var i = 1; i <= quantity; i++) {
-  //       productObject.push(product);
-  //     }
-  //   };
-  //   add();
+  const quantity = req.body.quantity;
+  console.log(req.body);
+  try {
+    const product = await Product.findById(id);
+    const test = await User.findById(user_id);
+    productObject = [];
+    const add = () => {
+      for (var i = 1; i <= quantity; i++) {
+        productObject.push(product);
+      }
+    };
+    add();
 
-  //   const user = await User.findByIdAndUpdate(
-  //     user_id,
-  //     { basket: test.basket.concat(productObject) },
-  //     { new: true }
-  //   );
-  // } catch (err) {
-  //   res.status(400).json(err);
-  // }
+    const user = await User.findByIdAndUpdate(
+      user_id,
+      { basket: test.basket.concat(productObject) },
+      { new: true }
+    );
+  } catch (err) {
+    res.status(400).json(err);
+  }
 };
 exports.changeBasket = async (req, res) => {
   const { id } = req.params;
   const { user_id } = req.body;
   const { value } = req.body;
-  console.log("test");
+  console.log(value);
   const product_id = id;
 
   if (value === "delete") {

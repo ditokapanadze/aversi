@@ -14,7 +14,7 @@ const authReducers = (state = initialState, action) => {
     case "AUTH":
       console.log(action.data);
       localStorage.setItem("authToken", action.data.token);
-      return { ...state, authData: action.data };
+      return { ...state, user: action.data };
     case "AUTH_ERR":
       console.log("test");
       console.log(action.message);
