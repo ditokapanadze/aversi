@@ -11,6 +11,7 @@ import CartPage from "./screens/CartPage.js";
 import PaymantPage from "./screens/PaymantPage.js";
 import ProfilePage from "./screens/ProfilePage.js";
 import LoginPage from "./screens/LoginPage.js";
+import Map from "./screens/Map.js";
 import ForgotpasswordPage from "./screens/ForgotpasswordPage.js";
 import PrivateRoute from "./routing/PrivateRoute";
 
@@ -40,6 +41,9 @@ function App() {
           <Route path="/passwordreset/:token">
             <ForgotpasswordPage />
           </Route>
+          {/* <Route path="/adress">
+            <Map />
+          </Route> */}
           <Route path="/">
             <Home />
           </Route>

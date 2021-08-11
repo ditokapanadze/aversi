@@ -8,6 +8,6 @@ const ggg = () => {
 };
 
 router.route("/addToBasket/:id").put(addToBasket);
-router.route("/changeBasket/:id").put(cors(), changeBasket);
+router.route("/changeBasket/:id").put(changeBasket);
 
 module.exports = router;

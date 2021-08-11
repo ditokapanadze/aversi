@@ -20,21 +20,33 @@ function ProfilePageInfo() {
   console.log(adress);
   console.log(number);
   const token = localStorage.getItem("authToken");
-  const upload = () => {
+  const upload = async () => {
     setShowUpload(false);
-    axios
-      .put("http://localhost:5000/api/infoupdate/changeAvatar", {
-        photo,
-        token,
-      })
-      .then((res) => {
-        setPhoto("");
-      })
-      .catch((err) => console.log(err));
+
+    try {
+      const { data } = await axios.put(
+        "http://localhost:5000/api/infoupdate/changeAvatar",
+        {
+          photo,
+          token,
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+    // axios
+    //   .put("http://localhost:5000/api/infoupdate/changeAvatar", {
+    //     photo,
+    //     token,
+    //   })
+    //   .then((res) => {
+    //     setPhoto("");
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   const updateInfo = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     if (number || adress) {
       try {
         const { data } = await axios.put(
