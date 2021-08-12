@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 function Navbar() {
@@ -13,8 +14,13 @@ function Navbar() {
   return (
     <div className="navbar">
       <ul className="nav__ul">
-        <li className="nav__li">კატალოგი</li>
-        <li className="nav__li">აფთიაქბი</li>
+        <Link to="/catalogue">
+          <li className="nav__li">კატალოგი</li>
+        </Link>
+        <Link to="/adress">
+          <li className="nav__li">აფთიაქბი</li>
+        </Link>
+
         <li className="nav__li">კლინიკები</li>
         <li className="nav__li">კატალოგი</li>
         <li className="nav__li">ჩვენს შესახებ</li>

@@ -27,7 +27,7 @@ function CartContent() {
   //     counter1[i].quantity = test1[i];
   //   }
   // };
-
+  console.log(basket);
   const makeArr = () => {
     let key = Object.keys(counter);
     let value = Object.values(counter);
@@ -74,60 +74,67 @@ function CartContent() {
         <p>კალათა</p>
         <p>მთავარი / კალათა</p>
       </div> */}
+      {basket.lentgh > 0 ? (
+        <div className="cart__items">
+          <div className="cart__left">
+            <div className="cart__title">
+              <p>პროდუქციის დასახელება</p>
+              <p>ფასი</p>
+              <p>რაოდენობა</p>
 
-      <div className="cart__items">
-        <div className="cart__left">
-          <div className="cart__title">
-            <p>პროდუქციის დასახელება</p>
-            <p>ფასი</p>
-            <p>რაოდენობა</p>
+              <p>ჯამი</p>
+            </div>
 
-            <p>ჯამი</p>
-          </div>
-
-          {sortedProduct?.map((item) => (
-            <div className="cart__item" key={item._id}>
-              <div className="product__type">
-                <img className="cart__img" src={item.photo} />
-                <div className="cart__item__title">
-                  <p>{item.name}</p>
-                  <p className="type">{item.type}</p>
+            {sortedProduct?.map((item) => (
+              <div className="cart__item" key={item._id}>
+                <div className="product__type">
+                  <img className="cart__img" src={item.photo} />
+                  <div className="cart__item__title">
+                    <p>{item.name}</p>
+                    <p className="type">{item.type}</p>
+                  </div>
+                </div>
+                <p className="item__price">{item.price}</p>
+                <div className="add__delete">
+                  <button
+                    value="delete"
+                    onClick={(e) => changeBasket(e, item._id)}
+                  >
+                    -
+                  </button>
+                  <p>{item.quantity}</p>
+                  <button
+                    value="add"
+                    onClick={(e) => changeBasket(e, item._id)}
+                  >
+                    +
+                  </button>
+                </div>
+                <div>
+                  <p>{(item.price * item.quantity).toFixed(2)}</p>
+                  <p className="delete__item">წაშლა</p>
                 </div>
               </div>
-              <p className="item__price">{item.price}</p>
-              <div className="add__delete">
-                <button
-                  value="delete"
-                  onClick={(e) => changeBasket(e, item._id)}
-                >
-                  -
-                </button>
-                <p>{item.quantity}</p>
-                <button value="add" onClick={(e) => changeBasket(e, item._id)}>
-                  +
-                </button>
-              </div>
-              <div>
-                <p>{item.price * item.quantity}</p>
-                <p className="delete__item">წაშლა</p>
-              </div>
+            ))}
+          </div>
+          <div className="cart__right">
+            <div className="product__price">
+              <p>პროდუქცია</p>
+              <p>{total} ლარი</p>
             </div>
-          ))}
+            <div className="comission">
+              <p>მიტანის საკომისიო</p> <p>0 ლარი</p>
+            </div>
+            <div className="total">
+              <p>სულ</p> <p>{total} ლარი</p>
+            </div>
+            <button className="buy__btn">ყიდვა</button>
+          </div>
         </div>
-        <div className="cart__right">
-          <div className="product__price">
-            <p>პროდუქცია</p>
-            <p>{total} ლარი</p>
-          </div>
-          <div className="comission">
-            <p>მიტანის საკომისიო</p> <p>0 ლარი</p>
-          </div>
-          <div className="total">
-            <p>სულ</p> <p>{total} ლარი</p>
-          </div>
-          <button className="buy__btn">ყიდვა</button>
-        </div>
-      </div>
+      ) : (
+        <p className="cart__empty">თქვენი კალათა ცარიაელი</p>
+      )}
+
       <p className="warning">
         გაყიდული პროდუქცია დაბრუნებას ან/და შეცვლას არ ექვემდებარება
       </p>

@@ -126,6 +126,12 @@
   margin-top: 100px;
 }
 
+.cart__empty {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+}
+
 @media screen and (max-width: 1400px) {
   .cart__items {
     margin-left: 50px;

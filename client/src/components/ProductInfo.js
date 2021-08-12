@@ -43,14 +43,14 @@ function ProductInfo({
         <p>მთავარი / კატალოგი / წამლები / {name}</p>
       </div>
       <div className="product__info__container">
-        <div className="small__imgs">
+        {/* <div className="small__imgs">
           <div className="small__img">
             <img src={small} />
           </div>
           <div className="small__img">
             <img src={small} />
           </div>
-        </div>
+        </div> */}
         <div className="large__img">
           <img className="large-img" src={photo} />
         </div>

@@ -32,7 +32,9 @@ function Header() {
 
   return (
     <header>
-      <img className="logo" clas src={aversiLogo} />
+      <Link to="/">
+        <img className="logo" clas src={aversiLogo} />
+      </Link>
 
       <input className="search" type="text" placeholder="წამლის ძიება" />
       <div className="header__icons">
