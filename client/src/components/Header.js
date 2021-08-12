@@ -12,7 +12,7 @@ import axios from "axios";
 function Header() {
   const [loggedIn, setLoggedIn] = useState(false);
   const auth = useSelector((state) => state.auth);
-
+  console.log(auth);
   const location = useLocation();
 
   let history = useHistory();
@@ -36,7 +36,7 @@ function Header() {
 
       <input className="search" type="text" placeholder="წამლის ძიება" />
       <div className="header__icons">
-        {!auth.user ? (
+        {!auth.token ? (
           <Link to="/Login">
             <i class="fas fa-sign-in-alt">შესვლა</i>
           </Link>
@@ -51,7 +51,7 @@ function Header() {
             </Link>
             <Link to="/">
               <i
-                onClick={() => localStorage.clear()}
+                onClick={() => dispatch({ type: "LOG_OUT" })}
                 class="fas fa-sign-out-alt"
               ></i>
             </Link>

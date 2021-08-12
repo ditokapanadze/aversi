@@ -41,9 +41,9 @@ function App() {
           <Route path="/passwordreset/:token">
             <ForgotpasswordPage />
           </Route>
-          {/* <Route path="/adress">
+          <Route path="/adress">
             <Map />
-          </Route> */}
+          </Route>
           <Route path="/">
             <Home />
           </Route>

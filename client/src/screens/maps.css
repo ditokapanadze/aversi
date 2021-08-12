@@ -4,3 +4,31 @@
 .map {
   margin: 50px auto;
 }
+.map__button {
+  outline: none;
+  background-color: #f4f2f0;
+  border: none;
+}
+
+.adress__ul {
+  width: 400px;
+  margin: 0 20vw;
+}
+.adress__ul li {
+  margin-bottom: 10px;
+}
+.adress__ul li button {
+  font-size: 20px;
+}
+.map__container {
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 62vh;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px #00000029;
+
+  width: 60%;
+  background-color: white;
+}

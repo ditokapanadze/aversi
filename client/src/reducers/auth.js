@@ -1,5 +1,5 @@
 const initialState = {
-  token: localStorage.getItem("authToken"),
+  token: localStorage.getItem("authToken") || null,
   isAuthenticated: null,
   isLoading: false,
   user: null,
@@ -8,13 +8,17 @@ const initialState = {
 
 const authReducers = (state = initialState, action) => {
   switch (action.type) {
-    case "LOGOUT":
+    case "LOG_OUT":
       localStorage.clear();
-      return { ...state, authData: null };
+      return { ...state, authData: null, token: null };
     case "AUTH":
       console.log(action.data);
       localStorage.setItem("authToken", action.data.token);
-      return { ...state, user: action.data };
+      return {
+        ...state,
+        user: action.data,
+        token: localStorage.getItem("authToken"),
+      };
     case "AUTH_ERR":
       console.log("test");
       console.log(action.message);
