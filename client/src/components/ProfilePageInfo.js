@@ -25,7 +25,7 @@ function ProfilePageInfo() {
 
     try {
       const { data } = await axios.put(
-        "http://localhost:5000/api/infoupdate/changeAvatar",
+        "http://localhost:5001/api/infoupdate/changeAvatar",
         {
           photo,
           token,
@@ -50,7 +50,7 @@ function ProfilePageInfo() {
     if (number || adress) {
       try {
         const { data } = await axios.put(
-          "http://localhost:5000/api/infoupdate/changeInfo",
+          "http://localhost:5001/api/infoupdate/changeInfo",
           { adress, number, token }
         );
         console.log(data);

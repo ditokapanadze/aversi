@@ -7,14 +7,20 @@ const jwt = require("jsonwebtoken");
 const Product = require("../models/Products");
 
 exports.addToBasket = async (req, res, next) => {
-  console.log("resr");
+  console.log("testdddd");
   const { id } = req.params;
-  // const user_id = req.body.auth.user._id;
+
+  console.log(id);
+
+  const user_id = req.body.user_id;
   const quantity = req.body.quantity;
-  console.log(req.body);
+
+  console.log(user_id);
+  console.log(quantity);
   try {
     const product = await Product.findById(id);
     const test = await User.findById(user_id);
+
     productObject = [];
     const add = () => {
       for (var i = 1; i <= quantity; i++) {
@@ -28,6 +34,7 @@ exports.addToBasket = async (req, res, next) => {
       { basket: test.basket.concat(productObject) },
       { new: true }
     );
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
   }

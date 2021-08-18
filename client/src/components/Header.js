@@ -3,11 +3,13 @@ import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import aversiLogo from "../assets/aversi-ltd.svg";
+import jwt_decode from "jwt-decode";
 
 import { useHistory } from "react-router-dom";
 
 import { getUser } from "../actions/auth";
 import axios from "axios";
+import { verify } from "jsonwebtoken";
 
 function Header() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -29,6 +31,18 @@ function Header() {
 
     dispatch(getUser(config));
   }, [dispatch]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      console.log(decodedToken);
+      if (Date.now() >= decodedToken.exp * 1000) {
+        console.log("token expired");
+        localStorage.clear();
+      }
+    }
+  }, []);
 
   return (
     <header>

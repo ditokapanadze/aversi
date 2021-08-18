@@ -27,11 +27,22 @@ function ProductInfo({
   const decrement = () => {
     quantity > 1 && setQuantity((prevState) => prevState - 1);
   };
+
+  let config = {
+    headers: { "Access-Control-Allow-Origin": "*" },
+    body: {
+      auth,
+      quantity,
+    },
+  };
   const addToBasket = (id) => {
+    const user_id = auth.user._id;
+
+    console.log(quantity);
     axios
-      .put(`http://localhost:5000/api/basket/addToBasket/${id}`, {
-        auth,
+      .put(`http://localhost:5001/api/basket/addToBasket/${id}`, {
         quantity,
+        user_id,
       })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));

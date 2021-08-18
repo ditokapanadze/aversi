@@ -14,7 +14,12 @@ const options = {
   origin: allowedOrigins,
 };
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  })
+);
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header(
@@ -23,9 +28,16 @@ app.use(cors({ origin: "*" }));
 //   );
 //   next();
 // });
+
+console.log(cors);
 app.get("/", (req, res) => {
   res.send("Hello to  aversi API");
 });
+// app.all("/", function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   next();
+// });
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/product", require("./routes/product"));
 app.use("/api/private", require("./routes/private"));
@@ -34,7 +46,7 @@ app.use("/api/basket", require("./routes/basket"));
 // ეს ყოველთვის ბოლო უნდა იყოს
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 const server = app.listen(PORT, () =>
   console.log(`Server running on port ${PORT}`)

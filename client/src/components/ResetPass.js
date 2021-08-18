@@ -32,7 +32,7 @@ function ResetPass() {
 
     try {
       const { data } = axios.put(
-        `http://localhost:5000/api/auth/resetpassword/${token}`,
+        `http://localhost:5001/api/auth/resetpassword/${token}`,
         { pass },
         config
       );

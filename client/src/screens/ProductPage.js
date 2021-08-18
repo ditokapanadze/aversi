@@ -10,7 +10,7 @@ function ProductPage() {
   console.log(param);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/product/getproduct/${param.id}`)
+      .get(`http://localhost:5001/api/product/getproduct/${param.id}`)
       .then((res) => setProduct(res.data.data))
       .catch((err) => console.log(err));
   }, [param]);

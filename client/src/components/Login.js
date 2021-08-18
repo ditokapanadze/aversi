@@ -65,7 +65,7 @@ function Login() {
     };
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/forgotpassword",
+        "http://localhost:5001/api/auth/forgotpassword",
         { resetEmail },
         config
       );

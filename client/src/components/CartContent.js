@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 function CartContent() {
   const [total, setTotal] = useState("");
+
   let dispatch = useDispatch();
   const basket = useSelector((state) => state.auth.user?.basket);
   const user_id = useSelector((state) => state.auth.user?._id);
@@ -17,17 +18,7 @@ function CartContent() {
     var key = JSON.stringify(obj);
     counter[key] = (counter[key] || 0) + 1;
   });
-  // const makeArr = () => {
-  //   let test = Object.keys(counter);
-  //   let test1 = Object.values(counter);
-  //   console.log(test1);
-  //   console.log(JSON.parse(test[1]));
-  //   for (var i = 0; i < test.length; i++) {
-  //     counter1.push(JSON.parse(test[i]));
-  //     counter1[i].quantity = test1[i];
-  //   }
-  // };
-  console.log(basket);
+
   const makeArr = () => {
     let key = Object.keys(counter);
     let value = Object.values(counter);
@@ -35,15 +26,16 @@ function CartContent() {
     console.log(value);
     // console.log(test1);
     // console.log(JSON.parse(test[1]));
-    for (var i = 0; i < key.length; i++) {
+    for (var i = 0; i < key?.length; i++) {
       sortedProduct.push(JSON.parse(key[i]));
       sortedProduct[i].quantity = value[i];
+      console.log(sortedProduct);
     }
   };
   makeArr();
   console.log(sortedProduct);
-  sortedProduct.map((item) => console.log(item));
 
+  console.log(sortedProduct);
   const changeBasket = (e, product_id) => {
     console.log(product_id);
     const value = e.target.value;
@@ -74,7 +66,7 @@ function CartContent() {
         <p>კალათა</p>
         <p>მთავარი / კალათა</p>
       </div> */}
-      {basket.lentgh > 0 ? (
+      {basket?.length > 0 ? (
         <div className="cart__items">
           <div className="cart__left">
             <div className="cart__title">
@@ -132,7 +124,7 @@ function CartContent() {
           </div>
         </div>
       ) : (
-        <p className="cart__empty">თქვენი კალათა ცარიაელი</p>
+        <p>sdfsdf</p>
       )}
 
       <p className="warning">
