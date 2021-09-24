@@ -28,10 +28,10 @@ app.use(
 //   );
 //   next();
 // });
-
+const PORT = process.env.PORT || 5001;
 console.log(cors);
 app.get("/", (req, res) => {
-  res.send("Hello to  aversi API");
+  res.send(`erver running on port ${PORT}`);
 });
 // app.all("/", function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -46,12 +46,11 @@ app.use("/api/basket", require("./routes/basket"));
 // ეს ყოველთვის ბოლო უნდა იყოს
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5001;
-
 const server = app.listen(PORT, () =>
   console.log(`Server running on port ${PORT}`)
 );
 
+console.log(`Server running on port ${PORT}`);
 process.on("unhandledRejection", (err, promise) => {
   console.log(`error: ${err}`);
   server.close(() => process.exit(1));
