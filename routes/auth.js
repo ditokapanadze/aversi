@@ -10,7 +10,7 @@ const {
   changeAvatar,
 } = require("../controllers/auth");
 
-// იგივეა რაც  router..port("/register", register)
+// იგივეა   router..port("/register", register)
 router.route("/register").post(register);
 router.route("/login").post(login);
 
