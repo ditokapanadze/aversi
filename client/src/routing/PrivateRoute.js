@@ -1,5 +1,6 @@
 // import { Route, Redirect } from "react-router-dom";
 import { Redirect, Route } from "react-router-dom";
+import decode from "jwt-decode";
 
 // function PrivateRoute({ component: Component, ...rest }) {
 //   const checkAuth = () => {
@@ -27,7 +28,18 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     if (!token) {
       return false;
     }
-    return true;
+    try {
+      const { exp } = decode(token);
+      console.log(exp);
+      console.log(new Date().getTime());
+      if (exp * 1000 < new Date().getTime()) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (e) {
+      return false;
+    }
   };
 
   return (

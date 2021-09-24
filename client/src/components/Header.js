@@ -13,6 +13,7 @@ import { verify } from "jsonwebtoken";
 
 function Header() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [search, setSearch] = useState("");
   const auth = useSelector((state) => state.auth);
   console.log(auth);
   const location = useLocation();
@@ -37,20 +38,39 @@ function Header() {
     if (token) {
       const decodedToken = jwt_decode(token);
       console.log(decodedToken);
+      console.log(new Date().getTime());
+      console.log(Date.now());
+
       if (Date.now() >= decodedToken.exp * 1000) {
         console.log("token expired");
         localStorage.clear();
       }
     }
   }, []);
-
+  useEffect(() => {
+    console.log(search);
+    axios
+      .get("http://localhost:5001/api/product/getproductSearch", {
+        params: {
+          search,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }, [search]);
   return (
     <header>
       <Link to="/">
         <img className="logo" clas src={aversiLogo} />
       </Link>
 
-      <input className="search" type="text" placeholder="წამლის ძიება" />
+      <input
+        className="search"
+        type="text"
+        onChange={(e) => setSearch(e.target.value.trim())}
+        placeholder="წამლის ძიება"
+        value={search}
+      />
       <div className="header__icons">
         {!auth.token ? (
           <Link to="/Login">
