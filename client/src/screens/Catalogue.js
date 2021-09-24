@@ -12,7 +12,7 @@ function Catalogue() {
   useEffect(() => {
     console.log("test");
     axios
-      .get(`http://localhost:5001/api/product/getproducts/${page}`)
+      .get(`https://aversi.herokuapp.com/api/product/getproducts/${page}`)
       .then((res) => {
         setProduct(res.data.data);
         setPages(res.data.numberOfPages);
