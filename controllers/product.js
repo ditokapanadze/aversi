@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const Product = require("../models/Products");
 const { findById } = require("../models/Products");
+const { search } = require("../routes/product");
 exports.getProducts = async (req, res) => {
   const { page } = req.params;
   console.log(page);
@@ -35,5 +36,22 @@ exports.getProduct = async (req, res) => {
     res.status(200).json({ data: product });
   } catch (err) {
     res.status(400).json({ message: "product not found" });
+  }
+};
+
+exports.searchProduct = async (req, res) => {
+  const { search } = req.query;
+  console.log(search);
+
+  try {
+    const searchQuery = new RegExp(search, "i");
+    const product = await Product.find({
+      name: searchQuery,
+    });
+
+    console.log(product);
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(400).json(err);
   }
 };
