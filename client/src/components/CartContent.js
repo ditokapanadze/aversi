@@ -3,17 +3,28 @@ import "./CartContent.css";
 import cartImg from "../assets/small1.png";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { getUser } from "../actions/auth";
 function CartContent() {
   const [total, setTotal] = useState("");
 
   let dispatch = useDispatch();
+
+  useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    };
+
+    dispatch(getUser(config));
+  }, [dispatch]);
   const basket = useSelector((state) => state.auth.user?.basket);
   const user_id = useSelector((state) => state.auth.user?._id);
-  // console.log(group1.kia);
-
   let counter = {};
   let sortedProduct = [];
 
+  useEffect(() => {});
   basket?.forEach(function (obj) {
     var key = JSON.stringify(obj);
     counter[key] = (counter[key] || 0) + 1;
@@ -103,7 +114,7 @@ function CartContent() {
                   </button>
                 </div>
                 <div>
-                  <p>{(item.price * item.quantity).toFixed(2)}</p>
+                  <p>{(item.price * item.quantity)?.toFixed(2)}</p>
                   <p className="delete__item">წაშლა</p>
                 </div>
               </div>
@@ -112,13 +123,13 @@ function CartContent() {
           <div className="cart__right">
             <div className="product__price">
               <p>პროდუქცია</p>
-              <p>{total} ლარი</p>
+              <p>{total && total?.toFixed(2)} ლარი</p>
             </div>
             <div className="comission">
               <p>მიტანის საკომისიო</p> <p>0 ლარი</p>
             </div>
             <div className="total">
-              <p>სულ</p> <p>{total} ლარი</p>
+              <p>სულ</p> <p>{total && total?.toFixed(2)} ლარი</p>
             </div>
             <button className="buy__btn">ყიდვა</button>
           </div>

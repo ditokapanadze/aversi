@@ -17,6 +17,7 @@ function ProductInfo({
   id,
 }) {
   const [quantity, setQuantity] = useState(1);
+  const [display, setDisplay] = useState("none");
 
   const auth = useSelector((state) => state.auth);
 
@@ -40,12 +41,19 @@ function ProductInfo({
 
     console.log(quantity);
     axios
-      .put(`http://localhost:5001/api/basket/addToBasket/${id}`, {
+      .put(`https://aversi.herokuapp.com/api/basket/addToBasket/${id}`, {
         quantity,
         user_id,
       })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
+  };
+
+  const ShowPopup = () => {
+    setDisplay("");
+    setTimeout(() => {
+      setDisplay("none");
+    }, 3500);
   };
   return (
     <>
@@ -86,12 +94,21 @@ function ProductInfo({
           </div>
 
           <div className="add__basket">
-            <button onClick={() => addToBasket(id)} className="add__btn">
+            <button
+              onClick={(() => addToBasket(id), ShowPopup)}
+              className="add__btn"
+            >
               კალათაში დამატება
             </button>{" "}
             <div className="heart__container">
               <i class="far fa-heart"></i>
             </div>
+          </div>
+          <div className="cart__popup" style={{ display: display }}>
+            <p>კალათაში დაემატა ახალი პროდუქცია </p>
+            <p>დასახელება : {name} </p>
+            <p>რაოდენობა : {quantity} </p>
+            <img className="cart__popup__img" src={photo} />
           </div>
         </div>
       </div>

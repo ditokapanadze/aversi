@@ -25,7 +25,9 @@
 .sales__slider__preview {
   padding-left: 20px;
   padding-right: 20px;
+  margin-top: 20px;
   margin-bottom: 40px;
+  font-size: 18px;
 }
 .sales h2 {
   position: absolute;

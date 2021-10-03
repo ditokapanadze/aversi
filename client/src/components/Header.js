@@ -14,14 +14,13 @@ import { verify } from "jsonwebtoken";
 function Header() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [search, setSearch] = useState("");
+  const [foundProducts, setFoundProducts] = useState([]);
+
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
-  const location = useLocation();
 
-  let history = useHistory();
   let dispatch = useDispatch();
+  let history = useHistory();
 
-  console.log(auth.token);
   useEffect(() => {
     const config = {
       headers: {
@@ -47,30 +46,69 @@ function Header() {
       }
     }
   }, []);
-  useEffect(() => {
-    console.log(search);
-    axios
-      .get("http://localhost:5001/api/product/getproductSearch", {
-        params: {
-          search,
-        },
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }, [search]);
+
+  // useEffect(() => {
+  //   console.log("raxdebaa");
+  //   axios
+  //     .get("https://aversi.herokuapp.com/api/product/getproductSearch", {
+  //       params: {
+  //         search,
+  //       },
+  //     })
+  //     .then((res) => setFoundProducts(res.data))
+  //     .catch((err) => console.log(err));
+  // }, [search]);
+  const handleChange = (e) => {
+    setSearch(e.target.value.trim());
+    if (search.length >= 2) {
+      axios
+        .get("https://aversi.herokuapp.com/api/product/getproductSearch", {
+          params: {
+            search,
+          },
+        })
+        .then((res) => setFoundProducts(res.data))
+        .catch((err) => console.log(err));
+    }
+  };
+  console.log(foundProducts);
   return (
     <header>
       <Link to="/">
         <img className="logo" clas src={aversiLogo} />
       </Link>
+      <div className="search__container">
+        {" "}
+        <input
+          className="search"
+          type="text"
+          onChange={(e) => handleChange(e)}
+          placeholder="წამლის ძიება"
+          value={search}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              alert("test");
+            }
+          }}
+        />
+        {foundProducts.length > 0 && search.length >= 2 && (
+          <div className="found__product__container">
+            {foundProducts.map((item) => (
+              <div
+                onClick={() => {
+                  history.push(`product/${item._id}`, setSearch(""));
+                }}
+                className="found__product__info"
+              >
+                {" "}
+                <img src={item.photo} className="found__product__img" />
+                <p className="found__product__name">{item.name}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
-      <input
-        className="search"
-        type="text"
-        onChange={(e) => setSearch(e.target.value.trim())}
-        placeholder="წამლის ძიება"
-        value={search}
-      />
       <div className="header__icons">
         {!auth.token ? (
           <Link to="/Login">

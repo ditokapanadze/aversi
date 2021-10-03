@@ -47,6 +47,31 @@ header {
 .fa-user {
   padding-left: 0px;
 }
+
+.found__product__img {
+  width: 150px;
+}
+
+.search__container {
+  position: relative;
+}
+.found__product__info {
+  background-color: rgb(231, 222, 222);
+  padding: 20px;
+
+  position: absolute;
+  width: 730px;
+  z-index: 1;
+}
+.found__product__info:hover {
+  cursor: pointer;
+  background-color: rgb(184, 178, 178);
+  opacity: 1;
+}
+.found__product__name {
+  font-size: 18px;
+  font-weight: 600;
+}
 @media screen and (max-width: 1400px) {
   header {
     padding: 20px 25px;

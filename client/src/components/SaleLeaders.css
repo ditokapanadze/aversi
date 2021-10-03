@@ -16,6 +16,11 @@
   height: 450px !important;
   margin-top: 90px;
   margin-bottom: 50px;
+  transition: all 0.3s;
+}
+.swiper-slide:hover {
+  cursor: pointer;
+  transform: scale(1.03);
 }
 .swiper-container {
   position: relative;
@@ -32,7 +37,7 @@
 }
 
 .slider__img {
-  width: 250px;
+  width: 350px;
 }
 .slider__title,
 .medicine__review,

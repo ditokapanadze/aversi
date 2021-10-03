@@ -32,7 +32,7 @@ function ResetPass() {
 
     try {
       const { data } = axios.put(
-        `http://localhost:5001/api/auth/resetpassword/${token}`,
+        `https://aversi.herokuapp.com/api/auth/resetpassword/${token}`,
         { pass },
         config
       );

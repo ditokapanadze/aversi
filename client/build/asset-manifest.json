@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d3de6ae1.chunk.css",
+    "main.js": "/static/js/main.2a5801d1.chunk.js",
+    "main.js.map": "/static/js/main.2a5801d1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.01604c58.js",
+    "runtime-main.js.map": "/static/js/runtime-main.01604c58.js.map",
+    "static/css/2.95a74303.chunk.css": "/static/css/2.95a74303.chunk.css",
+    "static/js/2.fca52fce.chunk.js": "/static/js/2.fca52fce.chunk.js",
+    "static/js/2.fca52fce.chunk.js.map": "/static/js/2.fca52fce.chunk.js.map",
+    "static/js/3.c1f5195a.chunk.js": "/static/js/3.c1f5195a.chunk.js",
+    "static/js/3.c1f5195a.chunk.js.map": "/static/js/3.c1f5195a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.95a74303.chunk.css.map": "/static/css/2.95a74303.chunk.css.map",
+    "static/css/main.d3de6ae1.chunk.css.map": "/static/css/main.d3de6ae1.chunk.css.map",
+    "static/js/2.fca52fce.chunk.js.LICENSE.txt": "/static/js/2.fca52fce.chunk.js.LICENSE.txt",
+    "static/media/aversi-ltd.24e2cae3.svg": "/static/media/aversi-ltd.24e2cae3.svg",
+    "static/media/BackgroundBanner.css": "/static/media/aversi_homepage_photo.f36a5baf.jpg",
+    "static/media/chipolino.5d0f8f03.png": "/static/media/chipolino.5d0f8f03.png",
+    "static/media/dpantol.3f93459c.png": "/static/media/dpantol.3f93459c.png",
+    "static/media/footerlogo.c25b24c3.svg": "/static/media/footerlogo.c25b24c3.svg",
+    "static/media/iphone.ed4632c8.png": "/static/media/iphone.ed4632c8.png",
+    "static/media/large1.b35f451e.png": "/static/media/large1.b35f451e.png",
+    "static/media/medicine.1403282d.png": "/static/media/medicine.1403282d.png",
+    "static/media/profile.195a074f.jpg": "/static/media/profile.195a074f.jpg",
+    "static/media/small1.4db49cfe.png": "/static/media/small1.4db49cfe.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.01604c58.js",
+    "static/css/2.95a74303.chunk.css",
+    "static/js/2.fca52fce.chunk.js",
+    "static/css/main.d3de6ae1.chunk.css",
+    "static/js/main.2a5801d1.chunk.js"
+  ]
+}

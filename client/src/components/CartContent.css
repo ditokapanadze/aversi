@@ -2,7 +2,6 @@
   display: flex;
   margin-top: 50px;
   margin-left: 100px;
-  background-color: aqua;
 }
 .cart__container__title {
   height: 100px;
@@ -155,7 +154,6 @@
   .cart__left {
     margin-right: 50px;
     width: 90vw;
-    background-color: blue;
   }
   .cart__right {
     margin: 0 auto;

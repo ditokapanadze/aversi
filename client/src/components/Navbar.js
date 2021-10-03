@@ -18,7 +18,7 @@ function Navbar() {
           <li className="nav__li">კატალოგი</li>
         </Link>
         <Link to="/adress">
-          <li className="nav__li">აფთიაქბი</li>
+          <li className="nav__li">აფთიაქები</li>
         </Link>
 
         <li className="nav__li">კლინიკები</li>
