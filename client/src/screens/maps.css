@@ -8,8 +8,11 @@
   outline: none;
   background-color: #f4f2f0;
   border: none;
+  transition: all 0.3s;
 }
-
+.map__button:hover {
+  font-size: 21px;
+}
 .adress__ul {
   width: 400px;
   margin: 0 20vw;

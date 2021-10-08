@@ -74,9 +74,9 @@ function ProductInfo({
           <img className="large-img" src={photo} />
         </div>
         <div className="info__container">
-          <p>{name}</p>
-          <p>{price} ლარი</p>
-          <p>{type}</p>
+          <p>დასახელება: {name}</p>
+          <p>ფასი: {price} ლარი</p>
+          <p>დანიშნულება: {type}</p>
           <p>ქვეყანა: {country}</p>
           <p>მწარმოებელი: {producer}</p>
           <p>გაცემის ფორმა: {form}</p>

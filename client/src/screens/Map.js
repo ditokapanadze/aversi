@@ -137,7 +137,6 @@ const Map = ({ center, zoom }) => {
               className="map__button"
             >
               <i class="fas fa-map-marker-alt"></i> კოსტავას ქ. №22
-              (ფილარმონიასთან)
             </button>
           </li>
           <li value="test">

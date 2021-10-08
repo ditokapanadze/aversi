@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CatalogueEmail from "./CatalogueEmail";
 import "./CatalogueFilters.css";
+import { useSelector, useDispatch } from "react-redux";
+import { getProduct } from "../actions/product";
 
 function CatalogueFilters() {
+  const [filter, setFilter] = useState("");
+
+  let dispatch = useDispatch();
+
+  const filterProduct = (e) => {
+    setFilter(e);
+  };
+
+  useEffect(() => {
+    const page = 0;
+    console.log(filter);
+    dispatch(getProduct(page, filter));
+  }, [filter]);
   return (
     <div>
       {}
@@ -10,72 +25,123 @@ function CatalogueFilters() {
         <p>გაფილტვრა</p>
         <label class="container">
           ინფექციების საწინააღმდეგო
-          <input type="checkbox" value="infection" />
+          <input
+            type="radio"
+            name="radio"
+            value="ინფექციების საწინააღმდეგო"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           ანთების საწინააღმდეგო
-          <input type="checkbox" vale="inflammation" />
+          <input
+            type="radio"
+            name="radio"
+            value="ანთების საწინააღმდეგო"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           ნევროლოგიური
-          <input type="checkbox" value="neurological" />
+          <input
+            type="radio"
+            name="radio"
+            value="ნევროლოგიური"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           ჰორმონალურ ცვლაზე მოქმედი
-          <input type="checkbox" value="hormones" />
+          <input
+            type="radio"
+            name="radio"
+            value="ჰორმონალურ ცვლაზე მოქმედი"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           ნივთიერებათა ცვლაზე მოქმედი
-          <input type="checkbox" value="tachytrophism" />
+          <input
+            type="radio"
+            name="radio"
+            value="ნივთიერებათა ცვლაზე მოქმედი"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           გულ-სისხლძარღვთა
-          <input type="checkbox" value="cardiovascular" />
+          <input
+            type="radio"
+            name="radio"
+            value="გულ-სისხლძარღვთა"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           შარდ-სასქესო
-          <input type="checkbox" value="hematuria" />
+          <input
+            type="radio"
+            name="radio"
+            value="შარდ-სასქესო"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           სასუნთქი სისტემა
-          <input type="checkbox" value="respiratory" />
+          <input
+            type="radio"
+            name="radio"
+            value="სასუნთქი სისტემა"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           კუჭ-ნაწლავი
-          <input type="checkbox" value="bowels" />
+          <input
+            type="radio"
+            name="radio"
+            value="კუჭ-ნაწლავი"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           დერმატოლოგიური
-          <input type="checkbox" value="dermatological" />
+          <input
+            type="radio"
+            name="radio"
+            value="დერმატოლოგიური"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
         <label class="container">
           ოფთალმოლოგიური
-          <input type="checkbox" value="ophthalmologic" />
+          <input
+            type="radio"
+            name="radio"
+            value="ოფთალმოლოგიური"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
-        <label class="container">
-          მოვლის საგნები
-          <input type="checkbox" value="care" />
-          <span class="checkmark"></span>
-        </label>
+
         <label class="container">
           ჰომეოპათიური
-          <input type="checkbox" value="homeopathic" />
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">
-          სისხლისა და სისხწარმოქმნაზე მოქმედი
-          <input type="checkbox" value="haemopoiesis" />
+          <input
+            type="radio"
+            name="radio"
+            value="ჰომეოპათიური"
+            onChange={(e) => filterProduct(e.target.value)}
+          />
           <span class="checkmark"></span>
         </label>
       </div>

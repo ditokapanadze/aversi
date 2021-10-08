@@ -82,3 +82,9 @@ form input {
   font-size: 22px;
   margin-top: 50px;
 }
+
+.profile__email__input {
+  border-style: none;
+  color: white;
+  background-color: #ec5257;
+}

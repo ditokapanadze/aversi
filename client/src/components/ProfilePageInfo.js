@@ -97,7 +97,11 @@ function ProfilePageInfo() {
           onChange={(e) => setNumber(e.target.value)}
         />
         <p>ელ-ფოსტა:</p>
-        <input value={auth?.user?.email} type="email" />
+        <input
+          value={auth?.user?.email}
+          className="profile__email__input"
+          type="email"
+        />
         <p>მისამართი:</p>
         <input
           type="text"
