@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5001" });
+const API = axios.create({ baseURL: "https://aversi.herokuapp.com/" });
 
 const url = "/";
 

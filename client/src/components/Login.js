@@ -69,7 +69,7 @@ function Login() {
     };
     try {
       const { data } = await axios.post(
-        "http://localhost:5001/api/auth/forgotpassword",
+        "https://aversi.herokuapp.com/api/auth/forgotpassword",
         { resetEmail },
         config
       );
