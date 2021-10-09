@@ -19,3 +19,9 @@
   margin-right: 10px;
   color: var(--main-red);
 }
+
+.download__li img {
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10px;
+}

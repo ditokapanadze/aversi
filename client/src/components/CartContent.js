@@ -33,22 +33,17 @@ function CartContent() {
   const makeArr = () => {
     let key = Object.keys(counter);
     let value = Object.values(counter);
-    console.log(key);
-    console.log(value);
+
     // console.log(test1);
     // console.log(JSON.parse(test[1]));
     for (var i = 0; i < key?.length; i++) {
       sortedProduct.push(JSON.parse(key[i]));
       sortedProduct[i].quantity = value[i];
-      console.log(sortedProduct);
     }
   };
   makeArr();
-  console.log(sortedProduct);
 
-  console.log(sortedProduct);
   const changeBasket = (e, product_id) => {
-    console.log(product_id);
     const value = e.target.value;
     axios
       .put(`api/basket/changeBasket/${product_id}`, {
@@ -57,7 +52,7 @@ function CartContent() {
       })
       .then((res) => {
         const user = res.data.data;
-        console.log(user);
+
         dispatch({ type: "NEW_BASKET", user: user });
       })
       .catch((err) => console.log(err));

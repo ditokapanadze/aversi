@@ -49,7 +49,7 @@ function ProductInfo({
     console.log(quantity);
     console.log("quantity");
     axios
-      .put(`http://localhost:5001/api/basket/addToBasket/${id}`, {
+      .put(`https://aversi.herokuapp.com/api/basket/addToBasket/${id}`, {
         quantity,
         user_id,
       })

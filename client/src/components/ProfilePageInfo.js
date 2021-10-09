@@ -40,7 +40,7 @@ function ProfilePageInfo() {
     //   console.log(err);
     // }
     axios
-      .put("http://localhost:5001/api/infoupdate/changeAvatar", {
+      .put("https://aversi.herokuapp.com/api/infoupdate/changeAvatar", {
         photo,
         token,
       })
@@ -64,7 +64,7 @@ function ProfilePageInfo() {
     if (number || adress) {
       try {
         const { data } = await axios.put(
-          "http://localhost:5001/api/infoupdate/changeInfo",
+          "https://aversi.herokuapp.com/api/infoupdate/changeInfo",
           { adress, number, token }
         );
         setDisplay("");

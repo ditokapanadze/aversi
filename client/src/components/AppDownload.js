@@ -1,6 +1,8 @@
 import React from "react";
 import "./AppDownload.css";
 import iphone from "../assets/iphone.png";
+import Apple from "../assets/Apple.png";
+import GooglePlay from "../assets/googlePlay.png";
 
 function AppDownload() {
   return (
@@ -27,6 +29,21 @@ function AppDownload() {
           <li className="download__li">
             <span>&#11044;</span>
             შეიძინე პროდუქცია სახელიდან გაუსვლელად
+          </li>
+          <li className="download__li">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.leavingstone.aversi&hl=ka&gl=US"
+              target="_blank"
+            >
+              <img src={GooglePlay} />{" "}
+            </a>
+            <a
+              href="https://apps.apple.com/app/aversi/id1195068578"
+              target="_blank"
+            >
+              {" "}
+              <img src={Apple} />{" "}
+            </a>{" "}
           </li>
         </ul>
       </div>
