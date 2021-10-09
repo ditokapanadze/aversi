@@ -162,13 +162,13 @@ exports.resetpassword = async (req, res, next) => {
 const sendToken = (user, statusCode, res) => {
   console.log("tokenis funqcia");
   console.log(user);
-  console.log(user.getSignedJwtToken());
-  // const token = user.getSignedJwtToken();
-  const token = () => {
+  getSignedJwtToken = function () {
     return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRE,
     });
   };
+
+  const token = getSignedJwtToken();
   console.log(token);
 
   res.status(statusCode).json({
