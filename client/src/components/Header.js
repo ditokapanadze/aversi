@@ -17,7 +17,7 @@ function Header() {
   const [foundProducts, setFoundProducts] = useState([]);
 
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
+  console.log(auth.user);
   let dispatch = useDispatch();
   let history = useHistory();
 
@@ -36,12 +36,8 @@ function Header() {
     const token = localStorage.getItem("authToken");
     if (token) {
       const decodedToken = jwt_decode(token);
-      console.log(decodedToken);
-      console.log(new Date().getTime());
-      console.log(Date.now());
 
       if (Date.now() >= decodedToken.exp * 1000) {
-        console.log("token expired");
         localStorage.clear();
       }
     }
@@ -71,7 +67,7 @@ function Header() {
         .catch((err) => console.log(err));
     }
   };
-  console.log(foundProducts);
+
   return (
     <header>
       <Link to="/">

@@ -37,7 +37,7 @@ exports.login = async (req, res, next) => {
   try {
     // Check that user exists by email
     const user = await User.findOne({ email }).select("+password");
-    console.log(user);
+
     if (!user) {
       return res.status(401).json({ message: "იმეილი არასწორია" });
     }
@@ -161,26 +161,14 @@ exports.resetpassword = async (req, res, next) => {
 
 const sendToken = (user, statusCode, res) => {
   console.log("tokenis funqcia");
-  console.log(user);
-
-  getSignedJwtToken = function () {
-    return jwt.sign(
-      { id: this._id },
-      "cc01c24b7ea0c3de7d4844a9d85af41e914b5d95b4d6d36f28515f6eb90a987dbc0747",
-      {
-        expiresIn: "200min",
-      }
-    );
-  };
-
-  const token = getSignedJwtToken();
+  const token = user.getSignedJwtToken();
   console.log(token);
-
   res.status(statusCode).json({
     success: true,
     token,
+    photo: user.photo,
     email: user.email,
-    name: user.username,
+    username: user.username,
     mobileNumber: user.mobileNumber,
     adress: user.adress,
   });

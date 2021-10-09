@@ -18,7 +18,9 @@ function ProfilePageInfo() {
   const [status, setStatus] = useState(auth?.user?.photo);
   const [showUpload, setShowUpload] = useState(false);
   const [display, setDisplay] = useState("none");
-  console.log(auth);
+
+  console.log(auth.user);
+
   let dispatch = useDispatch();
   const token = localStorage.getItem("authToken");
 
