@@ -13,6 +13,12 @@ function CatalogueFilters() {
     setFilter(e);
   };
 
+  const getAllproduct = () => {
+    const page = 1;
+    setFilter("");
+    console.log(filter);
+    dispatch(getProduct(page, filter));
+  };
   useEffect(() => {
     const page = 0;
     console.log(filter);
@@ -23,6 +29,16 @@ function CatalogueFilters() {
       {}
       <div className="filter">
         <p>გაფილტვრა</p>
+        <label class="container">
+          ყველას ჩვენება
+          <input
+            type="radio"
+            name="radio"
+            value=" ყველას ჩვენება"
+            onChange={getAllproduct}
+          />
+          <span class="checkmark"></span>
+        </label>
         <label class="container">
           ინფექციების საწინააღმდეგო
           <input

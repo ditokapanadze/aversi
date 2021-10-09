@@ -1,29 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
-  // const decode = () => {
-  //   var token = localStorage.getItem("authToken");
-  //   var decoded = jwt_decode(token);
+  let location = useLocation();
+  useEffect(() => {
+    console.log(location.pathname);
+  });
 
-  //   console.log(decoded);
-  // };
-  // decode();
   return (
     <div className="navbar">
       <ul className="nav__ul">
         <Link to="/catalogue">
-          <li className="nav__li">კატალოგი</li>
+          <li
+            className={`nav__li ${
+              location.pathname === "/catalogue" ? "active__button" : ""
+            }`}
+          >
+            კატალოგი
+          </li>
         </Link>
         <Link to="/adress">
-          <li className="nav__li">აფთიაქები</li>
+          <li
+            className={`nav__li ${
+              location.pathname === "/adress" ? "active__button" : ""
+            }`}
+          >
+            აფთიაქები
+          </li>
         </Link>
 
         <li className="nav__li">კლინიკები</li>
-        <li className="nav__li">კატალოგი</li>
-        <li className="nav__li">ჩვენს შესახებ</li>
+        <Link to="/aboutus">
+          <li
+            className={`nav__li ${
+              location.pathname === "/aboutus" ? "active__button" : ""
+            }`}
+          >
+            ჩვენს შესახებ
+          </li>
+        </Link>
       </ul>
     </div>
   );

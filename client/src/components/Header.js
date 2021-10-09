@@ -17,7 +17,7 @@ function Header() {
   const [foundProducts, setFoundProducts] = useState([]);
 
   const auth = useSelector((state) => state.auth);
-
+  console.log(auth);
   let dispatch = useDispatch();
   let history = useHistory();
 

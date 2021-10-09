@@ -9,7 +9,7 @@ import FileBase from "react-file-base64";
 
 function ProfilePageInfo() {
   const auth = useSelector((state) => state.auth);
-
+  console.log(auth);
   const userAdress = auth?.user?.adress;
   const userNumber = auth?.user?.mobileNumber;
   const [adress, setAdress] = useState("");
@@ -17,32 +17,44 @@ function ProfilePageInfo() {
   const [photo, setPhoto] = useState("");
   const [status, setStatus] = useState(auth?.user?.photo);
   const [showUpload, setShowUpload] = useState(false);
-  console.log(adress);
-  console.log(number);
+  const [display, setDisplay] = useState("none");
+  console.log(auth);
+  let dispatch = useDispatch();
   const token = localStorage.getItem("authToken");
+
   const upload = async () => {
     setShowUpload(false);
+    let photoBase = photo.base64;
+    console.log(photoBase);
+    console.log(photo);
+    // try {
+    //   const { data } = await axios.put(
+    //     "http://localhost:5001/api/infoupdate/changeAvatar",
+    //     {
+    //       photo,
+    //     }
+    //   );
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    axios
+      .put("http://localhost:5001/api/infoupdate/changeAvatar", {
+        photo,
+        token,
+      })
+      .then((res) => {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        };
 
-    try {
-      const { data } = await axios.put(
-        "https://aversi.herokuapp.com/api/infoupdate/changeAvatar",
-        {
-          photo,
-          token,
-        }
-      );
-    } catch (err) {
-      console.log(err);
-    }
-    // axios
-    //   .put("http://localhost:5000/api/infoupdate/changeAvatar", {
-    //     photo,
-    //     token,
-    //   })
-    //   .then((res) => {
-    //     setPhoto("");
-    //   })
-    //   .catch((err) => console.log(err));
+        dispatch(getUser(config));
+        console.log(res);
+        setPhoto("");
+      })
+      .catch((err) => console.log(err));
   };
 
   const updateInfo = async (e) => {
@@ -50,10 +62,13 @@ function ProfilePageInfo() {
     if (number || adress) {
       try {
         const { data } = await axios.put(
-          "https://aversi.herokuapp.com/api/infoupdate/changeInfo",
+          "http://localhost:5001/api/infoupdate/changeInfo",
           { adress, number, token }
         );
-        console.log(data);
+        setDisplay("");
+        setTimeout(() => {
+          setDisplay("none");
+        }, 4000);
       } catch (err) {
         console.log(err);
       }
@@ -87,7 +102,10 @@ function ProfilePageInfo() {
         <button onClick={() => setShowUpload(true)}>ავატარის შეცვლა</button>
       )}
 
-      <p> მომხმარებლის სახელი : {auth?.user?.username}</p>
+      <p className="user__name">
+        {" "}
+        მომხმარებლის სახელი : <span> {auth?.user?.username}</span>
+      </p>
       <form onSubmit={updateInfo}>
         <p>მობილურის ნომერი:</p>
         <input
@@ -112,6 +130,10 @@ function ProfilePageInfo() {
           {" "}
           შენახვა
         </button>
+        <p className="save__popup" style={{ display }}>
+          {" "}
+          მონაცემები განახლებულია
+        </p>
       </form>
     </div>
   );

@@ -14,6 +14,7 @@ import LoginPage from "./screens/LoginPage.js";
 import Map from "./screens/Map.js";
 import ForgotpasswordPage from "./screens/ForgotpasswordPage.js";
 import PrivateRoute from "./routing/PrivateRoute";
+import AboutUs from "./screens/AboutUs.js";
 
 function App() {
   return (
@@ -33,7 +34,6 @@ function App() {
           </Route>
           <PrivateRoute path="/profile" component={ProfilePage} />
           <PrivateRoute path="/cart" component={CartPage} />
-
           <Route path="/sold">
             <PaymantPage />
           </Route>
@@ -42,6 +42,9 @@ function App() {
           </Route>
           <Route path="/adress">
             <Map />
+          </Route>
+          <Route path="/aboutus">
+            <AboutUs />
           </Route>
           <Route path="/">
             <Home />

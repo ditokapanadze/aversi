@@ -36,18 +36,6 @@ function ProductInfo({
       quantity,
     },
   };
-  const addToBasket = (id) => {
-    const user_id = auth.user._id;
-
-    console.log(quantity);
-    axios
-      .put(`https://aversi.herokuapp.com/api/basket/addToBasket/${id}`, {
-        quantity,
-        user_id,
-      })
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  };
 
   const ShowPopup = () => {
     setDisplay("");
@@ -55,6 +43,20 @@ function ProductInfo({
       setDisplay("none");
     }, 3500);
   };
+  const addToBasket = (id) => {
+    const user_id = auth.user._id;
+    ShowPopup();
+    console.log(quantity);
+    console.log("quantity");
+    axios
+      .put(`http://localhost:5001/api/basket/addToBasket/${id}`, {
+        quantity,
+        user_id,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <div className="product__page__header">
@@ -94,10 +96,7 @@ function ProductInfo({
           </div>
 
           <div className="add__basket">
-            <button
-              onClick={(() => addToBasket(id), ShowPopup)}
-              className="add__btn"
-            >
+            <button onClick={() => addToBasket(id)} className="add__btn">
               კალათაში დამატება
             </button>{" "}
             <div className="heart__container">

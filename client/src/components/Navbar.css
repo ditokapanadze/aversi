@@ -22,6 +22,10 @@
   background-color: var(--hover-red);
 }
 
+.active__button {
+  background-color: var(--hover-red);
+}
+
 @media screen and (max-width: 1400px) {
   .navbar {
     padding-left: 25px;
