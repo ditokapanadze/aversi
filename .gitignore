@@ -6,7 +6,7 @@
 node_modules/
 node_modules
 .env
-.client
+client
 test2.js
 test3.js
 test.js

@@ -28,4 +28,3 @@ const sendEmail = (x) => {
   });
 };
 module.exports = sendEmail;
-sdf;
