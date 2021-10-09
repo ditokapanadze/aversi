@@ -163,7 +163,12 @@ const sendToken = (user, statusCode, res) => {
   console.log("tokenis funqcia");
   console.log(user);
   console.log(user.getSignedJwtToken());
-  const token = user.getSignedJwtToken();
+  // const token = user.getSignedJwtToken();
+  const token = () => {
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRE,
+    });
+  };
   console.log(token);
 
   res.status(statusCode).json({

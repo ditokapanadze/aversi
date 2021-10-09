@@ -68,14 +68,10 @@ exports.changeBasket = async (req, res) => {
   }
 
   if (value === "add") {
-    console.log("test");
-
     try {
-      console.log(product_id);
       const product = await Product.findById(product_id);
 
       const test = await User.findById(user_id);
-      console.log("productObject");
 
       const changeBasket = await User.findByIdAndUpdate(
         user_id,
@@ -84,7 +80,6 @@ exports.changeBasket = async (req, res) => {
       );
       res.status(200).json({ data: changeBasket });
     } catch (err) {
-      console.log(err);
       res.status(400).json(err);
     }
   }
