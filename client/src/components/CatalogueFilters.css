@@ -1,0 +1,94 @@
+.catalogue__header {
+  height: 100px;
+  background-color: white;
+  padding: 20px 100px;
+}
+.catalogue__header * {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #7d8078;
+}
+.filter {
+  margin-top: 30px;
+  margin-left: 100px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 340px;
+  height: 610px;
+  color: #6a6a68;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 10px;
+
+  font-size: 18px;
+}
+.filter p {
+  padding-left: 10px;
+  font-size: 22px;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+label {
+  text-indent: 10px;
+  width: 100%;
+  padding-top: 5px;
+  border-top: 1px solid grey;
+}
+label:last-child {
+  height: 50px;
+}
+
+.email__sales {
+  background-color: white;
+  margin-left: 100px;
+  margin-top: 50px;
+  width: 340px;
+
+  height: 160px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #6a6a68;
+}
+.email__sales form {
+  display: flex;
+  flex-direction: row;
+}
+.email__sales p {
+  line-height: 1.5;
+  height: 50px;
+  width: 75%;
+  font-size: 18px;
+}
+
+.email__input {
+  border-radius: 10px 0px 0px 10px;
+  border-style: none;
+  width: 204px;
+  height: 29px;
+  outline: none;
+  padding-left: 15px;
+  background-color: #f0efef;
+}
+.email__submit {
+  background-color: #ea3339;
+  width: 32px;
+  height: 31px;
+  border-style: none;
+  cursor: pointer;
+  color: whitesmoke;
+  border-radius: 0px 50% 50% 0px;
+}
+
+@media screen and (max-width: 1400px) {
+  .filter {
+    margin-left: 50px;
+  }
+  .email__sales {
+    margin-left: 50px;
+  }
+}

@@ -1,0 +1,49 @@
+.paymant {
+  width: 100%;
+  height: 60vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+}
+
+.white__space {
+  width: 100%;
+  height: 50px;
+  background-color: #fafafa;
+}
+
+.paymant__details {
+  margin-top: 10px;
+  background-color: #fafafa;
+  width: 400px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.paymant__details p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.paymant__details p span {
+  color: #ea3339;
+}
+.check {
+  display: flex;
+  align-items: center;
+  color: #ea3339;
+  margin-bottom: 30px;
+}
+
+.check p {
+  font-size: 22px;
+}
+.fa-check-square {
+  font-size: 25px;
+  margin-right: 20px;
+}

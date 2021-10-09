@@ -1,0 +1,114 @@
+.slider {
+  margin-left: 100px;
+  margin-right: 100px;
+  position: relative;
+}
+
+.swiper-slide {
+  width: 200px;
+  background-color: white;
+  padding: 30px 20px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 5px 5px #00000029;
+  border-radius: 10px;
+  height: 450px !important;
+  margin-top: 90px;
+  margin-bottom: 50px;
+  transition: all 0.3s;
+}
+.swiper-slide:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+.swiper-container {
+  position: relative;
+  height: 700px;
+}
+.slider h2 {
+  position: absolute;
+  top: 40px;
+}
+.slider__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider__img {
+  width: 350px;
+}
+.slider__title,
+.medicine__review,
+.slider__footer {
+  width: 100%;
+}
+.slider__title {
+  margin-bottom: 15px;
+  color: #2e2a2a;
+}
+
+.medicine__review {
+  letter-spacing: -0.45px;
+  color: #6a6a68;
+  margin-bottom: 15px;
+}
+.slider__footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.slider__button {
+  width: 130px;
+  height: 40px;
+  padding-bottom: 10px;
+  background: #ea333903 0% 0% no-repeat padding-box;
+  border: 1px solid #e93338;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.slider__button:hover {
+  background: #ea3339 0% 0% no-repeat padding-box;
+  color: whitesmoke;
+}
+
+.swiper-button-prev {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.swiper-button-next {
+  background-repeat: no-repeat;
+  background-image: url("../assets/right.png") !important;
+  top: 60px !important;
+  right: 20px !important;
+
+  width: 40px !important;
+}
+.swiper-button-next::after {
+  display: none;
+}
+.swiper-button-prev {
+  background-repeat: no-repeat;
+  background-image: url("../assets/right.png") !important;
+  left: 75vw !important;
+  top: 60px !important;
+  width: 40px !important;
+  transform: scaleX(-1);
+  margin-right: 20px;
+}
+.swiper-button-prev::after {
+  display: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .slider {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+}

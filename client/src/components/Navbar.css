@@ -1,0 +1,37 @@
+.navbar {
+  background-color: var(--main-red);
+  height: 50px;
+  padding-left: 50px;
+  display: flex;
+  align-items: center;
+  color: whitesmoke;
+}
+.nav__ul {
+  display: flex;
+}
+.nav__li {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  transition: all 0.3s;
+  padding-left: 55px;
+  padding-right: 55px;
+}
+.nav__li:hover {
+  cursor: pointer;
+  background-color: var(--hover-red);
+}
+
+.active__button {
+  background-color: var(--hover-red);
+}
+
+@media screen and (max-width: 1400px) {
+  .navbar {
+    padding-left: 25px;
+  }
+  .nav__li {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+}

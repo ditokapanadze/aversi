@@ -1,0 +1,102 @@
+.login__container {
+  background-color: #ffff;
+  max-width: 600px;
+  /* height: 400px; */
+  margin: 0 auto;
+  display: flex;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 3px #00000029;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+.signIn__btn,
+.register__btn {
+  color: white;
+  background-color: #ea3339;
+  margin-left: auto;
+  margin-right: 50px;
+  padding: 5px;
+  font-size: 20px;
+  width: 100px;
+  border-radius: 5px;
+  border-style: none;
+}
+.register__btn {
+  width: 140px;
+}
+.login__form input,
+.signup__form input {
+  width: 350px;
+}
+.mail__input {
+  flex-grow: 1;
+}
+.resset__password {
+  cursor: pointer;
+  color: #ea3339;
+}
+
+.reset__form {
+}
+.reset__form input {
+  width: 350px;
+}
+.reset__form p {
+  text-align: center;
+  width: 350px;
+}
+
+.reset__form button {
+  width: 200px;
+  height: 35px;
+  font-size: 16px;
+}
+
+.password__input {
+  margin-right: 12px;
+}
+
+.far,
+.fas {
+  cursor: pointer;
+}
+.fas {
+  font-size: 17px;
+}
+
+.login__container p {
+  font-size: 18px;
+}
+
+.login__container p span {
+  border-bottom: 1px solid #ea3339;
+  color: #ea3339;
+  font-weight: bold;
+  cursor: pointer;
+  padding-bottom: 2px;
+}
+
+.signup__form .fas {
+  margin-left: 10px;
+  margin-bottom: 5px;
+  font-size: 10px;
+  color: #ea3339;
+}
+.signup__form p {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.err__message {
+  color: rgb(255, 0, 0);
+}
+.fa-eye-slash {
+  font-size: 16px !important;
+}
+.fa-asterisk {
+  font-size: 18px !important;
+}

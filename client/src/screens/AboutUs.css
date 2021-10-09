@@ -1,0 +1,18 @@
+.about__us {
+  width: 80%;
+  background-color: white;
+  margin: 0 auto;
+  padding: 50px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 1px 0px 11px 6px rgba(0, 0, 0, 0.24);
+}
+
+.about__us h2 {
+  color: #ff0000;
+  margin-bottom: 30px;
+  margin-top: 60px;
+}
+.about__us p {
+  font-size: 18px;
+  line-height: 1.3;
+}
