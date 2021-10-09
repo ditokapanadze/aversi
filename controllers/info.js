@@ -6,10 +6,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
 exports.changeAvatar = async (req, res) => {
-  console.log("Asdasd");
   const { token, photo } = req.body;
-
-  console.log(photo);
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

@@ -7,16 +7,11 @@ const jwt = require("jsonwebtoken");
 const Product = require("../models/Products");
 
 exports.addToBasket = async (req, res, next) => {
-  console.log("testdddd");
   const { id } = req.params;
-
-  console.log(id);
 
   const user_id = req.body.user_id;
   const quantity = req.body.quantity;
 
-  console.log(user_id);
-  console.log(quantity);
   try {
     const product = await Product.findById(id);
     const test = await User.findById(user_id);
@@ -43,7 +38,7 @@ exports.changeBasket = async (req, res) => {
   const { id } = req.params;
   const { user_id } = req.body;
   const { value } = req.body;
-  console.log(value);
+
   const product_id = id;
 
   if (value === "delete") {

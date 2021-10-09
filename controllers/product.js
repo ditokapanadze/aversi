@@ -7,15 +7,14 @@ const { search } = require("../routes/product");
 exports.getProducts = async (req, res) => {
   const { page } = req.params;
   const { filter } = req.params;
-  console.log(filter);
 
   if (page > 0) {
     try {
       const LIMIT = 20;
       const startIndex = (Number(page) - 1) * LIMIT;
-      console.log(startIndex);
+
       const total = await Product.countDocuments({});
-      console.log(total);
+
       const product = await Product.find()
         .sort({ _id: 1 })
         .limit(LIMIT)
@@ -36,7 +35,6 @@ exports.getProducts = async (req, res) => {
         type: filterQuery,
       });
 
-      console.log(product);
       res.json({
         data: product,
       });
@@ -60,7 +58,6 @@ exports.getProduct = async (req, res) => {
 
 exports.searchProduct = async (req, res) => {
   const { search } = req.query;
-  console.log(search);
 
   try {
     const searchQuery = new RegExp(search, "i");
@@ -68,7 +65,6 @@ exports.searchProduct = async (req, res) => {
       name: searchQuery,
     });
 
-    console.log(product);
     res.status(200).json(product);
   } catch (err) {
     res.status(400).json(err);
