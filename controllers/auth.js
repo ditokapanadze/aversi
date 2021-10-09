@@ -164,9 +164,13 @@ const sendToken = (user, statusCode, res) => {
   console.log(user);
 
   getSignedJwtToken = function () {
-    return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRE,
-    });
+    return jwt.sign(
+      { id: this._id },
+      "cc01c24b7ea0c3de7d4844a9d85af41e914b5d95b4d6d36f28515f6eb90a987dbc0747",
+      {
+        expiresIn: "200min",
+      }
+    );
   };
 
   const token = getSignedJwtToken();
