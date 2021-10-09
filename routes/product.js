@@ -8,7 +8,7 @@ const {
   searchProduct,
 } = require("../controllers/product");
 
-router.route("/getproducts/:page").get(getProducts);
+router.route("/getproducts/:page/:filter").get(getProducts);
 router.route("/getproduct/:id").get(getProduct);
 router.route("/getproductSearch").get(searchProduct);
 

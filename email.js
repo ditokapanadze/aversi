@@ -2,16 +2,18 @@ const nodemailer = require("nodemailer");
 
 const sendEmail = (x) => {
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.mail.yahoo.com",
     port: 465,
+    service: "yahoo",
+    secure: false,
     auth: {
-      user: "ditokapanadze0@gmail.com",
-      pass: "mevarditokapanadze",
+      user: "ditokapanadze0@yahoo.com",
+      pass: "hvpyppggzlwylnsw",
     },
   });
 
   const options = {
-    from: "ditokapanadze0@gmail.com",
+    from: "ditokapanadze0@yahoo.com",
     to: x.to,
     subject: "password reset request",
     html: x.text,

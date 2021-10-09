@@ -168,5 +168,7 @@ const sendToken = (user, statusCode, res) => {
     token,
     email: user.email,
     name: user.username,
+    mobileNumber: user.mobileNumber,
+    adress: user.adress,
   });
 };
