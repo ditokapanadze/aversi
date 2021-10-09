@@ -37,7 +37,7 @@ exports.login = async (req, res, next) => {
   try {
     // Check that user exists by email
     const user = await User.findOne({ email }).select("+password");
-
+    console.log(user);
     if (!user) {
       return res.status(401).json({ message: "იმეილი არასწორია" });
     }
@@ -163,6 +163,7 @@ const sendToken = (user, statusCode, res) => {
   console.log("tokenis funqcia");
   const token = user.getSignedJwtToken();
   console.log(token);
+  console.log(user.getSignedJwtToken());
   res.status(statusCode).json({
     success: true,
     token,
