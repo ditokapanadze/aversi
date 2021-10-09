@@ -31,7 +31,11 @@ function Login() {
     setShowReset(false);
     setShowLogin(false);
   };
-
+  const signin = () => {
+    setShowSignup(false);
+    setShowReset(false);
+    setShowLogin(true);
+  };
   const form = {
     userName: "",
     email: "",
@@ -185,11 +189,13 @@ function Login() {
             {hide ? (
               <i onClick={hideShow} class="far fa-eye"></i>
             ) : (
-              <i onClick={hideShow} class="fas fa-eye-slash"></i>
+              <i onClick={hideShow} className="fas fa-eye-slash"></i>
             )}
           </div>
           <p className="err__message">{auth.message}</p>
-          <button type="submit">შესვლა</button>
+          <button type="submit" className="signIn__btn">
+            შესვლა
+          </button>
           <p onClick={resetForm} class="resset__password">
             პაროლის აღდგენა
           </p>
@@ -210,7 +216,7 @@ function Login() {
               placeholder="ელ-ფოსტა"
               onChange={handleChange}
             />
-            <i class="fas fa-asterisk"></i>
+            <i className="fas fa-asterisk"></i>
           </span>
           <span>
             <input
@@ -256,8 +262,21 @@ function Login() {
             placeholder="მისამართი"
             type="text"
           />
-          <button type="submit">რეგისტრაცია</button>
-          <p>უკვე გაქვ ექაუნთი?</p>
+          <button type="submit" className="register__btn">
+            რეგისტრაცია
+          </button>
+
+          <p
+            onClick={signin}
+            style={{
+              color: "#ea3339",
+              cursor: "pointer",
+
+              fontWeight: "bold",
+            }}
+          >
+            უკვე გაქვს ექაუნთი?
+          </p>
           <p>
             <i class="fas fa-asterisk"></i> სავალდებულო ველი
           </p>

@@ -13,7 +13,21 @@
   margin-top: 200px;
   margin-bottom: 200px;
 }
-
+.signIn__btn,
+.register__btn {
+  color: white;
+  background-color: #ea3339;
+  margin-left: auto;
+  margin-right: 50px;
+  padding: 5px;
+  font-size: 20px;
+  width: 100px;
+  border-radius: 5px;
+  border-style: none;
+}
+.register__btn {
+  width: 140px;
+}
 .login__form input,
 .signup__form input {
   width: 350px;
@@ -79,4 +93,10 @@
 
 .err__message {
   color: rgb(255, 0, 0);
+}
+.fa-eye-slash {
+  font-size: 16px !important;
+}
+.fa-asterisk {
+  font-size: 18px !important;
 }
