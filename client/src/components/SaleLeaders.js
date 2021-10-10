@@ -61,7 +61,7 @@ function SaleLeaders() {
               <img
                 className="slider__img"
                 src={item.photo}
-                style={{ width: "60%" }}
+                style={{ width: "70%" }}
               />
               <h3 className="slider__title">{item.name}</h3>
               <p className="medicine__review">{item.type}</p>

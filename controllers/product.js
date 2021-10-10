@@ -7,8 +7,13 @@ const { search } = require("../routes/product");
 exports.getProducts = async (req, res) => {
   const { page } = req.params;
   const { filter } = req.params;
-
-  if (page > 0) {
+  // ეს უნდა დაიტესტოს, შეიძლება რაღცები გააფუჭოს
+  if (page == 0 && filter) {
+    const product = await Product.find();
+    res.json({
+      data: product,
+    });
+  } else if (page > 0) {
     try {
       const LIMIT = 20;
       const startIndex = (Number(page) - 1) * LIMIT;

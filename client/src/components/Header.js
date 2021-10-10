@@ -119,7 +119,10 @@ function Header() {
             </Link>
             <i className="far fa-heart"></i>
             <Link to="/cart">
-              <i className="fas fa-cart-plus"></i>
+              <i className="fas fa-cart-plus">
+                {" "}
+                <p className="basket__popup">კალათა</p>
+              </i>
             </Link>
             <Link to="/">
               <i

@@ -29,16 +29,7 @@ function ProfilePageInfo() {
     let photoBase = photo.base64;
     console.log(photoBase);
     console.log(photo);
-    // try {
-    //   const { data } = await axios.put(
-    //     "http://localhost:5001/api/infoupdate/changeAvatar",
-    //     {
-    //       photo,
-    //     }
-    //   );
-    // } catch (err) {
-    //   console.log(err);
-    // }
+
     axios
       .put("https://aversi.herokuapp.com/api/infoupdate/changeAvatar", {
         photo,

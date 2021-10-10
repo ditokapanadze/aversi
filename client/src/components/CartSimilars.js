@@ -42,7 +42,7 @@ function CartSimilars() {
               <img src={item?.photo} style={{ width: "200px" }} />
               <div>
                 <h3>{item?.name}</h3>
-                <p>კრემი გარე გამოყენებისთვის</p>
+                <p>{item?.type}</p>
               </div>{" "}
               <div className="similar__item__footer">
                 <h3 className="similar__item__price">{item?.price}</h3>
