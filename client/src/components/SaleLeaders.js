@@ -5,13 +5,20 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/swiper-bundle.css";
 import medicine from "../assets/medicine.png";
 import star from "../assets/star.png";
+import { useSelector, useDispatch } from "react-redux";
 import useWindowDimensions from "./useWindowDimensions";
+import { getProduct } from "../actions/product";
 SwiperCore.use([Navigation, Pagination]);
 
 function SaleLeaders() {
   const { height, width } = useWindowDimensions();
   const [slidesNumber, setSlidesNumber] = useState(4);
   const [space, setSpace] = useState(48);
+
+  let dispatch = useDispatch();
+
+  const product = useSelector((state) => state.product);
+
   useEffect(() => {
     if (width < 1400) {
       setSlidesNumber(3);
@@ -21,6 +28,12 @@ function SaleLeaders() {
       setSpace(48);
     }
   }, [width]);
+
+  useEffect(() => {
+    let page = 0;
+    dispatch(getProduct(page));
+  }, []);
+  console.log(product[0]?.data);
   return (
     <div className="slider">
       <h2 className="leaders">ლიდერები გაყიდვაში</h2>
@@ -31,139 +44,36 @@ function SaleLeaders() {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        <SwiperSlide>
-          <div className="slider__header">
-            <div className="stars">
+        {product[0]?.data.map((item) =>
+          item.leader === true ? (
+            <SwiperSlide>
               {" "}
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-            </div>
-            <i class="far fa-heart"></i>
-          </div>
-          <img className="slider__img" src={medicine} />
-          <h3 className="slider__title">დ-პანტენოლი</h3>
-          <p className="medicine__review">კრემი გარე გამოყენებისთვის</p>
-          <div className="slider__footer">
-            <h3 className="slider__price">8.50 ლარი</h3>
-            <button className="slider__button">ყიდვა</button>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="slider__header">
-            <div className="stars">
-              {" "}
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-            </div>
-            <i class="far fa-heart"></i>
-          </div>
-          <img className="slider__img" src={medicine} />
-          <h3 className="slider__title">დ-პანტენოლი</h3>
-          <p className="medicine__review">კრემი გარე გამოყენებისთვის</p>
-          <div className="slider__footer">
-            <h3 className="slider__price">8.50 ლარი</h3>
-            <button className="slider__button">ყიდვა</button>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="slider__header">
-            <div className="stars">
-              {" "}
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-            </div>
-            <i class="far fa-heart"></i>
-          </div>
-          <img className="slider__img" src={medicine} />
-          <h3 className="slider__title">დ-პანტენოლი</h3>
-          <p className="medicine__review">კრემი გარე გამოყენებისთვის</p>
-          <div className="slider__footer">
-            <h3 className="slider__price">8.50 ლარი</h3>
-            <button className="slider__button">ყიდვა</button>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="slider__header">
-            <div className="stars">
-              {" "}
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-            </div>
-            <i class="far fa-heart"></i>
-          </div>
-          <img className="slider__img" src={medicine} />
-          <h3 className="slider__title">დ-პანტენოლი</h3>
-          <p className="medicine__review">კრემი გარე გამოყენებისთვის</p>
-          <div className="slider__footer">
-            <h3 className="slider__price">8.50 ლარი</h3>
-            <button className="slider__button">ყიდვა</button>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="slider__header">
-            <div className="stars">
-              {" "}
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-            </div>
-            <i class="far fa-heart"></i>
-          </div>
-          <img className="slider__img" src={medicine} />
-          <h3 className="slider__title">დ-პანტენოლი</h3>
-          <p className="medicine__review">კრემი გარე გამოყენებისთვის</p>
-          <div className="slider__footer">
-            <h3 className="slider__price">8.50 ლარი</h3>
-            <button className="slider__button">ყიდვა</button>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="slider__header">
-            <div className="stars">
-              {" "}
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-            </div>
-            <i class="far fa-heart"></i>
-          </div>
-          <img className="slider__img" src={medicine} />
-          <h3 className="slider__title">დ-პანტენოლი</h3>
-          <p className="medicine__review">კრემი გარე გამოყენებისთვის</p>
-          <div className="slider__footer">
-            <h3 className="slider__price">8.50 ლარი</h3>
-            <button className="slider__button">ყიდვა</button>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="slider__header">
-            <div className="stars">
-              {" "}
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-              <img src={star} />
-            </div>
-            <i class="far fa-heart"></i>
-          </div>
-          <img className="slider__img" src={medicine} />
-          <h3 className="slider__title">დ-პანტენოლი</h3>
-          <p className="medicine__review">კრემი გარე გამოყენებისთვის</p>
-          <div className="slider__footer">
-            <h3 className="slider__price">8.50 ლარი</h3>
-            <button className="slider__button ">ყიდვა</button>
-          </div>
-        </SwiperSlide>
+              <div className="slider__header">
+                <div className="stars">
+                  {" "}
+                  <img src={star} />
+                  <img src={star} />
+                  <img src={star} />
+                  <img src={star} />
+                </div>
+                <i class="far fa-heart"></i>
+              </div>
+              <img
+                className="slider__img"
+                src={item.photo}
+                style={{ width: "60%" }}
+              />
+              <h3 className="slider__title">{item.name}</h3>
+              <p className="medicine__review">{item.type}</p>
+              <div className="slider__footer">
+                <h3 className="slider__price">{item.price}</h3>
+                <button className="slider__button">ყიდვა</button>
+              </div>
+            </SwiperSlide>
+          ) : (
+            ""
+          )
+        )}
       </Swiper>
     </div>
   );

@@ -108,12 +108,14 @@ function Header() {
       <div className="header__icons">
         {!auth.token ? (
           <Link to="/Login">
-            <i class="fas fa-sign-in-alt">შესვლა</i>
+            <i className="fas fa-sign-in-alt">შესვლა</i>
           </Link>
         ) : (
           <div>
             <Link to="/profile">
-              <i className="far fa-user"></i>
+              <i className="far fa-user">
+                <p className="user__pupup">პროფილზე გადასვლა</p>
+              </i>
             </Link>
             <i className="far fa-heart"></i>
             <Link to="/cart">
@@ -122,7 +124,7 @@ function Header() {
             <Link to="/">
               <i
                 onClick={() => dispatch({ type: "LOG_OUT" })}
-                class="fas fa-sign-out-alt"
+                className="fas fa-sign-out-alt"
               ></i>
             </Link>
           </div>
