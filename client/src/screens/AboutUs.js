@@ -39,7 +39,10 @@ function AboutUs() {
         იტევს „ავერსის“ ემბლემა - მასაც ხომ, როგორც ბიბლიურ მტრედს, თავისი
         საქმიანობით სიმშვიდე და ჯანმრთელობა მოაქვს ადამიანებისთვის.
       </p>
-      <img src="https://www.aversi.ge/uploads/about_us/ofisi-charcho.jpg" />
+      <img
+        src="https://www.aversi.ge/uploads/about_us/ofisi-charcho.jpg"
+        style={{ width: "100%" }}
+      />
       <h2>მისია:</h2>
       <p>
         გაუადვილოს ადამიანებს საკუთარ და სხვების ჯანმრთელობაზე ზრუნვა - ასეთი

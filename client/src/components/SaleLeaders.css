@@ -111,3 +111,8 @@
     margin-right: 25px;
   }
 }
+@media screen and (max-width: 1024px) {
+  .swiper-slide {
+    height: auto !important;
+  }
+}

@@ -1,5 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
+import useWindowDimensions from "../components/useWindowDimensions";
 import Help from "../components/Help";
 import "./maps.css";
 
@@ -7,6 +8,14 @@ const Map = ({ center, zoom }) => {
   const [defZoom, setDfaultZoom] = useState(11);
   const [lat, setLat] = useState(41.716667);
   const [lng, setLng] = useState(44.783333);
+  const [mapHeight, setMapHeight] = useState("60vh");
+  const { height, width } = useWindowDimensions();
+
+  useEffect(() => {
+    if (width <= 1024) {
+      setMapHeight("35vh");
+    }
+  }, [width]);
 
   const test = (e) => {
     const { lng } = JSON.parse(e.target.value);
@@ -19,7 +28,7 @@ const Map = ({ center, zoom }) => {
   return (
     <>
       <div className="map__container">
-        <div className="map" style={{ height: "60vh", width: "98%" }}>
+        <div className="map" style={{ height: mapHeight, width: "98%" }}>
           <GoogleMapReact
             bootstrapURLKeys={{
               key: "AIzaSyB8po49Z5kWrqzVacpzVbFGGKE8MbI7-4I",
