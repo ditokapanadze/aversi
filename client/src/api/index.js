@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://aversi.herokuapp.com/" });
+const API = axios.create({ baseURL: "http://aversi.herokuapp.com/" });
 
 const url = "/";
 

@@ -53,6 +53,7 @@
     flex-direction: column;
   }
 }
+
 @media screen and (max-width: 1180px) {
   .catalogue__item {
     width: 320px;
@@ -66,5 +67,11 @@
   }
   .catalogue__item__img {
     width: 200px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .catalogue__item {
+    width: 280px;
+    height: 300px;
   }
 }

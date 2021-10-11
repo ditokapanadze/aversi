@@ -30,10 +30,13 @@ function SaleLeaders() {
   }, [width]);
 
   useEffect(() => {
+    console.log("tet");
     let page = 0;
     dispatch(getProduct(page));
   }, []);
-  console.log(product[0]?.data);
+
+  console.log(product);
+
   return (
     <div className="slider">
       <h2 className="leaders">ლიდერები გაყიდვაში</h2>
